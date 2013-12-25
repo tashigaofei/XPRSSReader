@@ -1,4 +1,4 @@
 XPRSSReader
 ===========
 
-A iOS Rss Reader for TheOldReader.
+A iOS Rss Reader for TheOldReader http://theoldreader.com/.
