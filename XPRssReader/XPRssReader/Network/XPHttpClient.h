@@ -7,8 +7,13 @@
 //
 
 #import "AFHTTPClient.h"
-
+#import "XPSubscription.h"
+#import "XPOldReaderUser.h"
 #import "JSONKit.h"
+
+
+typedef void(^StringBlock)(NSString *string);
+typedef void(^ErrorBlock)(NSError * error);
 
 @interface XPHttpClient : AFHTTPClient
 + (XPHttpClient *)sharedInstance;

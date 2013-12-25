@@ -8,6 +8,8 @@
 
 #import "XPRootViewController.h"
 
+#import "XPHttpClient+Login.h"
+#import "XPHttpClient+User.h"
 @interface XPRootViewController ()
 
 @end
@@ -18,7 +20,42 @@
 {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor greenColor];
-	// Do any additional setup after loading the view, typically from a nib.
+    
+    [self getUserInfoWithCompletionBlock:^(XPOldReaderUser *user) {
+        LogInfo(@"%@", user);
+        
+    } failureBlock:^(NSError *error) {
+        
+    }];
+}
+
+-(void) getUserInfoWithCompletionBlock:(void (^)(XPOldReaderUser * user)) completionBlock failureBlock:(void (^)(NSError* error)) failureBlock;
+{
+    [[XPHttpClient sharedInstance] loginOldReaderWithEmail:@"tashigaofei@gmail.com"
+                                                  password:@"Tashi123"
+                                           completionBlock:^(NSString *token) {
+                                               LogDebug(@"%@", token);
+                                            
+            [[XPHttpClient sharedInstance] getLoginedUserInfoWithToken:token
+                                                       completionBlock:^(XPOldReaderUser *userinfo) {
+                                                           LogDebug(@"%@", userinfo);
+                                                           if (completionBlock) {
+                                                               completionBlock(userinfo);
+                                                           }
+                                                       } failureBlock:^(NSError *error) {
+                                                           LogError(@"%@", error);
+                                                           if (failureBlock) {
+                                                               failureBlock(error);
+                                                           }
+                                                       }];
+                                               
+        } failureBlock:^(NSError *error) {
+            LogError(@"%@", error);
+            if (failureBlock) {
+                failureBlock(error);
+            }
+        }];
+    
 }
 
 - (void)didReceiveMemoryWarning

@@ -13,7 +13,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-
+    [self setupLumberjack];
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] ;
     XPRootViewController *rootVC = [[XPRootViewController alloc] init];
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:rootVC];
@@ -21,6 +22,21 @@
     [self.window makeKeyAndVisible];
     
     return YES;
+}
+
+-(void) setupLumberjack;
+{
+    [DDLog addLogger:[DDASLLogger sharedInstance]];
+    [DDLog addLogger:[DDTTYLogger sharedInstance]];
+    NSString *logFilePath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
+    DDLogFileManagerDefault *logFileManager = [[DDLogFileManagerDefault alloc] initWithLogsDirectory:logFilePath];
+    DDFileLogger *fileLoger = [[DDFileLogger alloc] initWithLogFileManager:logFileManager];
+    fileLoger.maximumFileSize = 1024;
+    fileLoger.rollingFrequency = 60 * 60;
+    fileLoger.logFileManager.maximumNumberOfLogFiles = 1;
+    [DDLog addLogger:fileLoger];
+    [[DDTTYLogger sharedInstance] setColorsEnabled:YES];
+    
 }
 							
 - (void)applicationWillResignActive:(UIApplication *)application
