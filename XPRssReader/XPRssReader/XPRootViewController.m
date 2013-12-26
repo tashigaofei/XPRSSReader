@@ -13,8 +13,9 @@
 #import "XPUserManager.h"
 #import "XPHttpClient+Subscription.h"
 #import "XPSubscriptionsTable.h"
+#import "RSSParser.h"
 
-@interface XPRootViewController ()
+@interface XPRootViewController ()<XPSubscriptionsTableDelegate>
 {
     XPSubscriptionsTable *_tableView;
 }
@@ -27,6 +28,7 @@
     [super loadView];
     
     _tableView = [[XPSubscriptionsTable alloc] initWithFrame:CGRectMake(0, 0, screenWidth, screenHeight-20-44)];
+    _tableView.tableDelegate = self;
     [self.view addSubview:_tableView];
     
 }
@@ -84,6 +86,18 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+
+-(void) subscriptionsTable:(XPSubscriptionsTable *) table didSelectAudio:(XPSubscription *) subscription;
+{
+    LogInfo(@"%@", subscription.url);
+    
+    [RSSParser parseRSSFeedForURL:subscription.url success:^(NSArray *feedItems) {
+//        LogInfo(@"%@", feedItems);
+    } failure:^(NSError *error) {
+        LogError(@"%@", error);
+    }];
 }
 
 @end

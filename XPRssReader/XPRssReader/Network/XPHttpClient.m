@@ -21,6 +21,7 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         sharedInstance = [[XPHttpClient alloc] initWithBaseURL:[NSURL URLWithString:@""]];
+        sharedInstance.showNetworkActivity = YES;
     });
     
     return sharedInstance;
@@ -54,7 +55,7 @@
 -(void) setShowNetworkActivity:(BOOL)showNetworkActivity
 {
     _showNetworkActivity = showNetworkActivity;
-//    [[AFNetworkActivityIndicatorManager sharedManager] setEnabled:_showNetworkActivity];
+    [[AFNetworkActivityIndicatorManager sharedManager] setEnabled:_showNetworkActivity];
    
 }
 

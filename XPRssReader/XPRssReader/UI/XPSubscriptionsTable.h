@@ -8,7 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+@class XPSubscriptionsTable;
+
+@protocol XPSubscriptionsTableDelegate <NSObject>
+-(void) subscriptionsTable:(XPSubscriptionsTable *) table didSelectAudio:(XPSubscription *) subscription;
+@end
+
 @interface XPSubscriptionsTable : UITableView
 @property (nonatomic, strong) NSMutableArray * tableDataSource;
+@property (nonatomic, weak) id<XPSubscriptionsTableDelegate> tableDelegate;
 
 @end

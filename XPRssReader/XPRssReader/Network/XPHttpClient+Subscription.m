@@ -10,6 +10,7 @@
 
 @implementation XPHttpClient (Subscription)
 
+
 -(void) getActiveUserSubScriptionsCompletionBlock:(void(^)(NSMutableArray* arrary)) completionBlock
                        failureBlock:(void (^)(NSError* error)) failureBlock;
 {
@@ -36,4 +37,6 @@
                                    }];
     
 }
+
+
 @end

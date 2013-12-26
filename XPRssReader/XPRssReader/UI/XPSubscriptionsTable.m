@@ -7,6 +7,7 @@
 //
 
 #import "XPSubscriptionsTable.h"
+#import "UIImageView+WebCache.h"
 
 @interface XPSubscriptionsTable()<UITableViewDelegate, UITableViewDataSource>
 
@@ -46,10 +47,10 @@
     }
     
     XPSubscription *object = _tableDataSource[indexPath.row];
+    [cell.imageView setImageWithURL:[NSURL URLWithString:object.iconUrl]];
     cell.textLabel.text = object.title;
     cell.textLabel.font = [UIFont boldSystemFontOfSize:14.0];
     cell.textLabel.textColor = [UIColor colorWithWhite:0.2 alpha:0.9];
-    [cell.imageView setImageWithURL:[NSURL URLWithString:object.iconUrl]];
     
     return cell;
 }
@@ -58,9 +59,9 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath;
 {
     [self deselectRowAtIndexPath:indexPath animated:YES];
-//    if ([_tableDelegate respondsToSelector:@selector(audioListTable:didSelectAudio:)]) {
-//        [_tableDelegate audioListTable:self didSelectAudio:_tableDataSource[indexPath.row]];
-//    }
+    if ([_tableDelegate respondsToSelector:@selector(subscriptionsTable:didSelectAudio:)]) {
+        [_tableDelegate subscriptionsTable:self didSelectAudio:_tableDataSource[indexPath.row]];
+    }
 }
 
 
