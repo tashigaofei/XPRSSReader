@@ -12,6 +12,7 @@
 #import "XPHttpClient+User.h"
 #import "XPUserManager.h"
 #import "XPHttpClient+Subscription.h"
+#import "XPHttpClient+Feed.h"
 #import "XPSubscriptionsTable.h"
 #import "RSSParser.h"
 
@@ -38,19 +39,28 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor greenColor];
     
-    [self getUserInfoWithCompletionBlock:^(XPOldReaderUser *user) {
-        [[XPUserManager sharedXPUserManager] setActiveUserInfo:user];
-        [[XPHttpClient sharedInstance] getActiveUserSubScriptionsCompletionBlock:^(NSMutableArray *arrary) {
-            LogDebug(@"%@", arrary);
-            [_tableView setTableDataSource:arrary];
-            [_tableView reloadData];
-            
+    if ([[XPUserManager sharedXPUserManager] subscriptions] == nil) {
+        [self getUserInfoWithCompletionBlock:^(XPOldReaderUser *user) {
+            [[XPUserManager sharedXPUserManager] setActiveUserInfo:user];
+            [[XPHttpClient sharedInstance] getActiveUserSubScriptionsCompletionBlock:^(NSMutableArray *arrary) {
+                LogDebug(@"%@", arrary);
+                [[XPUserManager sharedXPUserManager] setSubscriptions:arrary];
+                [_tableView setTableDataSource:arrary];
+                [_tableView reloadData];
+                
+            } failureBlock:^(NSError *error) {
+                LogError(@"%@", error);
+            }];
         } failureBlock:^(NSError *error) {
-            LogError(@"%@", error);
+            
         }];
-    } failureBlock:^(NSError *error) {
-        
-    }];
+      
+    }else{
+        [_tableView setTableDataSource:[[XPUserManager sharedXPUserManager] subscriptions]];
+        [_tableView reloadData];
+    }
+    
+    
 }
 
 -(void) getUserInfoWithCompletionBlock:(void (^)(XPOldReaderUser * user)) completionBlock failureBlock:(void (^)(NSError* error)) failureBlock;
@@ -93,11 +103,18 @@
 {
     LogInfo(@"%@", subscription.url);
     
-    [RSSParser parseRSSFeedForURL:subscription.url success:^(NSArray *feedItems) {
-//        LogInfo(@"%@", feedItems);
+//    [RSSParser parseRSSFeedForURL:subscription.url success:^(NSArray *feedItems) {
+////        LogInfo(@"%@", feedItems);
+//    } failure:^(NSError *error) {
+//        LogError(@"%@", error);
+//    }];
+    
+    [[XPHttpClient sharedInstance] getFeedsForURL:subscription.url completion:^(NSArray *feedItems) {
+        LogInfo(@"%@", feedItems);
     } failure:^(NSError *error) {
         LogError(@"%@", error);
     }];
+    
 }
 
 @end

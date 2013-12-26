@@ -7,10 +7,11 @@
 //
 
 #import "XPHttpClient+Feed.h"
+#import "RXMLElement.h"
 
 @implementation XPHttpClient (Feed)
 
-- (void) getFeedForURL:(NSString *) url
+- (void) getFeedsForURL:(NSString *) url
                    completion:(void (^)(NSArray *feedItems)) completionBlock
                    failure:(void (^)(NSError *error))failureBlock;
 {
@@ -19,10 +20,31 @@
                                    success:^(AFHTTPRequestOperation *operation, id responseObject) {
                                        
                                        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                                           LogInfo(@"%@", [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding]);
+                                           
+                                           RXMLElement *docElement = [[RXMLElement alloc] initFromXMLData:responseObject];
+                                           NSMutableArray *array = [NSMutableArray array];
+                                           [docElement iterateWithRootXPath:@"//item" usingBlock:^(RXMLElement * e) {
+                                               NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+                                               [e iterate:@"*" usingBlock:^(RXMLElement *aElement) {
+                                                   [dic setObject:aElement.text forKey:aElement.tag];
+                                               }];
+                                               XPFeed *feed = [[XPFeed alloc] initWithDictionary:dic];
+                                               [array addObject:feed];
+                                           }];
+                                           
+                                           if (completionBlock) {
+                                               dispatch_async(dispatch_get_main_queue(), ^{
+                                                   completionBlock(array);
+                                               });
+                                           }
                                        });
                                        
                                    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                                       failureBlock(error);
+                                       LogError(@"%@", error);
+                                       if (failureBlock) {
+                                           failureBlock(error);
+                                       }
                                        
                                    }];
 }

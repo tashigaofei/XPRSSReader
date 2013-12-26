@@ -24,7 +24,7 @@
 {
     
 //    NSAssert(0, @"error");
-    NSLog(@"undefind key:---------------------------------------------------\n %@ : %@", key, value);
+    LogError(@"undefind key:------ %@ : \n %@", key, value);
 }
 
 -(NSArray *)keyPaths;

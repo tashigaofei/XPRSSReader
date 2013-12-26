@@ -11,6 +11,7 @@
 @interface XPUserManager : NSObject
 
 @property (nonatomic, strong) XPOldReaderUser * activeUserInfo;
+@property (nonatomic, strong) NSMutableArray * subscriptions;
 
 + (id)sharedXPUserManager;
 -(NSString*) getActiveUserToken;

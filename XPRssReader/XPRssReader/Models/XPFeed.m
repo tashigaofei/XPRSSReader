@@ -10,10 +10,58 @@
 
 @implementation XPFeed
 
+- (void)setValue:(id)value forKey:(NSString *)key
+{
+    if ([key isEqualToString:@"id"] || [key isEqualToString:@"guid"]) {
+        self.objectID = value;
+        return;
+    }
+    if ([key isEqualToString:@"title"]) {
+        self.title = value;
+        return;
+    }
+    if ([key isEqualToString:@"link"]) {
+        self.link = value;
+        return;
+    }
+    if ([key isEqualToString:@"description"]) {
+        self.objectDescription = value;
+        return;
+    }
+    if ([key isEqualToString:@"content:encoded"] || [key isEqualToString:@"content"]) {
+        self.title = value;
+        return;
+    }
+    if ([key isEqualToString:@"comments"]) {
+        self.commentsLink = value;
+        return;
+    }
+    if ([key isEqualToString:@"wfw:commentRss"]) {
+        self.commentsFeed = [NSURL URLWithString:value];
+        return;
+    }
+    if ([key isEqualToString:@"slash:comments"]) {
+        self.commentsCount = @([value intValue]);
+        return;
+    }
+    if ([key isEqualToString:@"pubDate"] || [key isEqualToString:@"published"]) {
+        self.pubDate = value;
+        return;
+    }
+    if ([key isEqualToString:@"dc:creator"]) {
+        self.author = value;
+        return;
+    }
+    
+    [super setValue:value forKey:key];
+    
+}
+
+
 -(NSArray *)imagesFromItemDescription
 {
-    if (self.itemDescription) {
-        return [self imagesFromHTMLString:self.itemDescription];
+    if (self.objectDescription) {
+        return [self imagesFromHTMLString:self.objectDescription];
     }
     
     return nil;
@@ -51,42 +99,16 @@
     return [NSArray arrayWithArray:imagesURLStringArray];
 }
 
-//===========================================================
-//  Keyed Archiving
-//
-//===========================================================
-- (void)encodeWithCoder:(NSCoder *)encoder
-{
-    [encoder encodeObject:self.title forKey:@"title"];
-    [encoder encodeObject:self.itemDescription forKey:@"itemDescription"];
-    [encoder encodeObject:self.content forKey:@"content"];
-    [encoder encodeObject:self.link forKey:@"link"];
-    [encoder encodeObject:self.commentsLink forKey:@"commentsLink"];
-    [encoder encodeObject:self.commentsFeed forKey:@"commentsFeed"];
-    [encoder encodeObject:self.commentsCount forKey:@"commentsCount"];
-    [encoder encodeObject:self.pubDate forKey:@"pubDate"];
-    [encoder encodeObject:self.author forKey:@"author"];
-    [encoder encodeObject:self.guid forKey:@"guid"];
-}
-
-- (id)initWithCoder:(NSCoder *)decoder
-{
-    self = [super init];
-    if (self) {
-        self.title = [decoder decodeObjectForKey:@"title"];
-        self.itemDescription = [decoder decodeObjectForKey:@"itemDescription"];
-        self.content = [decoder decodeObjectForKey:@"content"];
-        self.link = [decoder decodeObjectForKey:@"link"];
-        self.commentsLink = [decoder decodeObjectForKey:@"commentsLink"];
-        self.commentsFeed = [decoder decodeObjectForKey:@"commentsFeed"];
-        self.commentsCount = [decoder decodeObjectForKey:@"commentsCount"];
-        self.pubDate = [decoder decodeObjectForKey:@"pubDate"];
-        self.author = [decoder decodeObjectForKey:@"author"];
-        self.guid = [decoder decodeObjectForKey:@"guid"];
-    }
-    return self;
-}
-
+@synthesize title;
+@synthesize objectDescription;
+@synthesize content;
+@synthesize link;
+@synthesize objectID;
+@synthesize commentsLink;
+@synthesize commentsFeed;
+@synthesize commentsCount;
+@synthesize pubDate;
+@synthesize author;
 
 //===========================================================
 // - (NSArray *)keyPaths
@@ -96,15 +118,15 @@
 {
     NSArray *result = [NSArray arrayWithObjects:
                        @"title",
-                       @"itemDescription",
+                       @"objectDescription",
                        @"content",
                        @"link",
+                       @"objectID",
                        @"commentsLink",
                        @"commentsFeed",
                        @"commentsCount",
                        @"pubDate",
                        @"author",
-                       @"guid",
                        nil];
     
     return result;
@@ -127,9 +149,46 @@
     
     return [NSString stringWithString:desc];
 }
-- (NSString *)description
+- (NSString *)description 
 {
-    return [self descriptionForKeyPaths];
+    return [self descriptionForKeyPaths]; 
+}
+
+
+//===========================================================
+//  Keyed Archiving
+//
+//===========================================================
+- (void)encodeWithCoder:(NSCoder *)encoder
+{
+    [encoder encodeObject:self.title forKey:@"title"];
+    [encoder encodeObject:self.objectDescription forKey:@"objectDescription"];
+    [encoder encodeObject:self.content forKey:@"content"];
+    [encoder encodeObject:self.link forKey:@"link"];
+    [encoder encodeObject:self.objectID forKey:@"objectID"];
+    [encoder encodeObject:self.commentsLink forKey:@"commentsLink"];
+    [encoder encodeObject:self.commentsFeed forKey:@"commentsFeed"];
+    [encoder encodeObject:self.commentsCount forKey:@"commentsCount"];
+    [encoder encodeObject:self.pubDate forKey:@"pubDate"];
+    [encoder encodeObject:self.author forKey:@"author"];
+}
+
+- (id)initWithCoder:(NSCoder *)decoder
+{
+    self = [super init];
+    if (self) {
+        self.title = [decoder decodeObjectForKey:@"title"];
+        self.objectDescription = [decoder decodeObjectForKey:@"objectDescription"];
+        self.content = [decoder decodeObjectForKey:@"content"];
+        self.link = [decoder decodeObjectForKey:@"link"];
+        self.objectID = [decoder decodeObjectForKey:@"objectID"];
+        self.commentsLink = [decoder decodeObjectForKey:@"commentsLink"];
+        self.commentsFeed = [decoder decodeObjectForKey:@"commentsFeed"];
+        self.commentsCount = [decoder decodeObjectForKey:@"commentsCount"];
+        self.pubDate = [decoder decodeObjectForKey:@"pubDate"];
+        self.author = [decoder decodeObjectForKey:@"author"];
+    }
+    return self;
 }
 
 #pragma mark -

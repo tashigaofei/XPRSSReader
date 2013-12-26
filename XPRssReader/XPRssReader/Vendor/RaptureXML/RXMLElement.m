@@ -442,6 +442,7 @@
 
 - (void)iterateWithRootXPath:(NSString *)xpath usingBlock:(void (^)(RXMLElement *))blk {
     NSArray *children = [self childrenWithRootXPath:xpath];
+    NSAssert(children, @"error");
     [self iterateElements:children usingBlock:blk];
 }
 

@@ -9,6 +9,7 @@
 #import "AFHTTPClient.h"
 #import "XPSubscription.h"
 #import "XPOldReaderUser.h"
+#import "XPFeed.h"
 #import "JSONKit.h"
 #import "XPUserManager.h"
 

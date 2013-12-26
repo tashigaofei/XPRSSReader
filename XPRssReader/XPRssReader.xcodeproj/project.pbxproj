@@ -79,6 +79,7 @@
 		81CAF9BE186ADDB90082B6B4 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81CAF9BD186ADDB90082B6B4 /* ImageIO.framework */; };
 		81CE5A22186C189F00217869 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81CE5A21186C189F00217869 /* Security.framework */; };
 		81CE5A24186C18AC00217869 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81CE5A23186C18AC00217869 /* MapKit.framework */; };
+		81CE5A27186C1C2400217869 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 81CE5A26186C1C2400217869 /* libz.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -221,6 +222,7 @@
 		81CAF9BD186ADDB90082B6B4 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		81CE5A21186C189F00217869 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		81CE5A23186C18AC00217869 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		81CE5A26186C1C2400217869 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -228,6 +230,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				81CE5A27186C1C2400217869 /* libz.dylib in Frameworks */,
 				81CE5A24186C18AC00217869 /* MapKit.framework in Frameworks */,
 				81CE5A22186C189F00217869 /* Security.framework in Frameworks */,
 				813D7BA4186C1750005DA0F8 /* libxml2.dylib in Frameworks */,
@@ -258,14 +261,14 @@
 		813D7B66186ADE84005DA0F8 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				813D7B9C186C166E005DA0F8 /* XPHttpClient+Feed.h */,
+				813D7B9D186C166E005DA0F8 /* XPHttpClient+Feed.m */,
 				813D7B7B186AF2B1005DA0F8 /* XPHttpClient+Login.h */,
 				813D7B7C186AF2B1005DA0F8 /* XPHttpClient+Login.m */,
 				813D7B7E186AF2C4005DA0F8 /* XPHttpClient+Subscription.h */,
 				813D7B7F186AF2C4005DA0F8 /* XPHttpClient+Subscription.m */,
 				813D7B84186B07E4005DA0F8 /* XPHttpClient+User.h */,
 				813D7B85186B07E4005DA0F8 /* XPHttpClient+User.m */,
-				813D7B9C186C166E005DA0F8 /* XPHttpClient+Feed.h */,
-				813D7B9D186C166E005DA0F8 /* XPHttpClient+Feed.m */,
 				813D7B69186ADE84005DA0F8 /* XPHttpClient.h */,
 				813D7B6A186ADE84005DA0F8 /* XPHttpClient.m */,
 			);
@@ -349,6 +352,7 @@
 		81CAF8EE186ACF060082B6B4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				81CE5A26186C1C2400217869 /* libz.dylib */,
 				81CE5A23186C18AC00217869 /* MapKit.framework */,
 				81CE5A21186C189F00217869 /* Security.framework */,
 				813D7BA5186C1774005DA0F8 /* libc++.dylib */,

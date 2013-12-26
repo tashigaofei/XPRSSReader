@@ -76,25 +76,6 @@
 }
 
 //===========================================================
-//  Keyed Archiving
-//
-//===========================================================
-- (void)encodeWithCoder:(NSCoder *)encoder
-{
-    [encoder encodeObject:self.activeUserInfo forKey:@"activeUserInfo"];
-}
-
-- (id)initWithCoder:(NSCoder *)decoder
-{
-    self = [super init];
-    if (self) {
-        self.activeUserInfo = [decoder decodeObjectForKey:@"activeUserInfo"];
-    }
-    return self;
-}
-
-
-//===========================================================
 // - (NSArray *)keyPaths
 //
 //===========================================================
@@ -102,9 +83,31 @@
 {
     NSArray *result = [NSArray arrayWithObjects:
                        @"activeUserInfo",
+                       @"subscriptions",
                        nil];
     
     return result;
+}
+
+
+//===========================================================
+//  Keyed Archiving
+//
+//===========================================================
+- (void)encodeWithCoder:(NSCoder *)encoder
+{
+    [encoder encodeObject:self.activeUserInfo forKey:@"activeUserInfo"];
+    [encoder encodeObject:self.subscriptions forKey:@"subscriptions"];
+}
+
+- (id)initWithCoder:(NSCoder *)decoder
+{
+    self = [super init];
+    if (self) {
+        self.activeUserInfo = [decoder decodeObjectForKey:@"activeUserInfo"];
+        self.subscriptions = [decoder decodeObjectForKey:@"subscriptions"];
+    }
+    return self;
 }
 
 //===========================================================
@@ -126,7 +129,7 @@
 }
 - (NSString *)description
 {
-    return [self descriptionForKeyPaths];
+    return [self descriptionForKeyPaths]; 
 }
 
 @end
