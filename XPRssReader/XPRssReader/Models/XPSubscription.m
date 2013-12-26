@@ -17,10 +17,10 @@
         return;
     }
     
-    if ([key isEqualToString:@"categories"]) {
-        self.categories = [(NSString *) value componentsSeparatedByString:@","];
-        return;
-    }
+//    if ([key isEqualToString:@"categories"]) {
+//        self.categories = [(NSString *) value componentsSeparatedByString:@","];
+//        return;
+//    }
     
     [super setValue:value forKey:key];
     

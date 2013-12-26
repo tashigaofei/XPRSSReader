@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface XPSubscriptionsTable : UITableView
+@property (nonatomic, strong) NSMutableArray * tableDataSource;
 
 @end

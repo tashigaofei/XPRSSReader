@@ -10,15 +10,13 @@
 
 @interface XPSubscriptionsTable()<UITableViewDelegate, UITableViewDataSource>
 
-@property (nonatomic, strong) NSMutableArray * tableDataSource;
-
 @end
 
 @implementation XPSubscriptionsTable
 
 - (id)initWithFrame:(CGRect)frame
 {
-    self = [super initWithFrame:frame];
+    self = [super initWithFrame:frame style:UITableViewStylePlain];
     if (self) {
         self.dataSource = self;
         self.delegate = self;
@@ -47,15 +45,11 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier];
     }
     
-//    XPTrack *audio = _tableDataSource[indexPath.row];
-//    cell.textLabel.text = audio.title;
-//    cell.textLabel.font = [UIFont boldSystemFontOfSize:14.0];
+    XPSubscription *object = _tableDataSource[indexPath.row];
+    cell.textLabel.text = object.title;
+    cell.textLabel.font = [UIFont boldSystemFontOfSize:14.0];
     cell.textLabel.textColor = [UIColor colorWithWhite:0.2 alpha:0.9];
-    //    if ([audio.photoUrl length]) {
-    //        [cell.imageView setImageWithURL:[NSURL URLWithString:audio.photoUrl] placeholderImage:nil];
-    //    }else{
-    //        [cell.imageView setImage:nil];
-    //    }
+    [cell.imageView setImageWithURL:[NSURL URLWithString:object.iconUrl]];
     
     return cell;
 }

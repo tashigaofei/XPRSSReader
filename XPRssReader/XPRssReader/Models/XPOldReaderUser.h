@@ -10,13 +10,13 @@
 
 @interface XPOldReaderUser : XPModel
 
-@property (nonatomic, copy) NSString *userId;
-@property (nonatomic, copy) NSString *userToken;
-@property (nonatomic, copy) NSString *userName;
-@property (nonatomic, copy) NSString *userProfileId;
-@property (nonatomic, copy) NSString *userEmail;
+@property (nonatomic, strong) NSString *userId;
+@property (nonatomic, strong) NSString *userToken;
+@property (nonatomic, strong) NSString *userName;
+@property (nonatomic, strong) NSString *userProfileId;
+@property (nonatomic, strong) NSString *userEmail;
 @property (nonatomic, assign, getter=isBloggerUser) BOOL isBloggerUser;
-@property (nonatomic, copy) NSString *signupTimeSec;
+@property (nonatomic, strong) NSString *signupTimeSec;
 @property (nonatomic, assign, getter=isMultiLoginEnabled) BOOL isMultiLoginEnabled;
 
 @end

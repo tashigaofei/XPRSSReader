@@ -10,11 +10,26 @@
 
 #import "XPHttpClient+Login.h"
 #import "XPHttpClient+User.h"
-@interface XPRootViewController ()
+#import "XPUserManager.h"
+#import "XPHttpClient+Subscription.h"
+#import "XPSubscriptionsTable.h"
 
+@interface XPRootViewController ()
+{
+    XPSubscriptionsTable *_tableView;
+}
 @end
 
 @implementation XPRootViewController
+
+-(void) loadView
+{
+    [super loadView];
+    
+    _tableView = [[XPSubscriptionsTable alloc] initWithFrame:CGRectMake(0, 0, screenWidth, screenHeight-20-44)];
+    [self.view addSubview:_tableView];
+    
+}
 
 - (void)viewDidLoad
 {
@@ -22,8 +37,15 @@
     self.view.backgroundColor = [UIColor greenColor];
     
     [self getUserInfoWithCompletionBlock:^(XPOldReaderUser *user) {
-        LogInfo(@"%@", user);
-        
+        [[XPUserManager sharedXPUserManager] setActiveUserInfo:user];
+        [[XPHttpClient sharedInstance] getActiveUserSubScriptionsCompletionBlock:^(NSMutableArray *arrary) {
+            LogDebug(@"%@", arrary);
+            [_tableView setTableDataSource:arrary];
+            [_tableView reloadData];
+            
+        } failureBlock:^(NSError *error) {
+            LogError(@"%@", error);
+        }];
     } failureBlock:^(NSError *error) {
         
     }];

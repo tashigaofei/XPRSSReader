@@ -10,7 +10,7 @@
 #import "XPSubscription.h"
 #import "XPOldReaderUser.h"
 #import "JSONKit.h"
-
+#import "XPUserManager.h"
 
 typedef void(^StringBlock)(NSString *string);
 typedef void(^ErrorBlock)(NSError * error);

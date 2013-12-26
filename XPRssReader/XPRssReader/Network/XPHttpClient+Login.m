@@ -25,7 +25,7 @@
                                         LogDebug(@"%@", [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding]);
                                         
                                         if (completionBlock) {
-                                            completionBlock([responseObject objectFromJSONData]);
+                                            completionBlock([responseObject objectFromJSONData][@"Auth"]);
                                         }
                                     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                                         LogError(@"%@", error);

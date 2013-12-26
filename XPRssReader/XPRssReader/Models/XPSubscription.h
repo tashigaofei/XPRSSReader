@@ -10,12 +10,12 @@
 
 @interface XPSubscription : XPModel
 
-@property (nonatomic, copy) NSString *objectID;
-@property (nonatomic, copy) NSString *title;
-@property (nonatomic, copy) NSArray *categories;
-@property (nonatomic, copy) NSString *sortid;
-@property (nonatomic, copy) NSString *firstitemmsec;
-@property (nonatomic, copy) NSString *url;
-@property (nonatomic, copy) NSString *htmlUrl;
-@property (nonatomic, copy) NSString *iconUrl;
+@property (nonatomic, strong) NSString *objectID;
+@property (nonatomic, strong) NSString *title;
+@property (nonatomic, strong) NSArray *categories;
+@property (nonatomic, strong) NSString *sortid;
+@property (nonatomic, strong) NSString *firstitemmsec;
+@property (nonatomic, strong) NSString *url;
+@property (nonatomic, strong) NSString *htmlUrl;
+@property (nonatomic, strong) NSString *iconUrl;
 @end
