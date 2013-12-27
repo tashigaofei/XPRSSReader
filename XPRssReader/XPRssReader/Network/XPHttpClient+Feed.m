@@ -20,11 +20,13 @@
                                    success:^(AFHTTPRequestOperation *operation, id responseObject) {
                                        
                                        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-                                           LogInfo(@"%@", [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding]);
+                                           NSString *responseString = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
+                                           LogInfo(@"%@", responseString);
+                                           responseString = [responseString stringByReplacingOccurrencesOfString:@"(?<=\\s)xmlns.*?(?=>)" withString:@"" options:NSRegularExpressionSearch range:NSMakeRange(0, [responseString length])];
                                            
-                                           RXMLElement *docElement = [[RXMLElement alloc] initFromXMLData:responseObject];
+                                           RXMLElement *docElement = [[RXMLElement alloc] initFromXMLString:responseString encoding:NSUTF8StringEncoding];
                                            NSMutableArray *array = [NSMutableArray array];
-                                           [docElement iterateWithRootXPath:@"//item" usingBlock:^(RXMLElement * e) {
+                                           [docElement iterateWithRootXPath:@"//entry|//item" usingBlock:^(RXMLElement * e) {
                                                NSMutableDictionary *dic = [NSMutableDictionary dictionary];
                                                [e iterate:@"*" usingBlock:^(RXMLElement *aElement) {
                                                    [dic setObject:aElement.text forKey:aElement.tag];
