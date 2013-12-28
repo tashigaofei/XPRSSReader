@@ -146,39 +146,32 @@
         NSAssert(0, @"error");
     }
     
+    
     NSUInteger length = 0;
     NSUInteger offset = 0;
-    NSUInteger index = 0;
+    NSRange matchRange;
     
-    while (TRUE) {
-        if (index == [matchRanges count]) {
-            length = [sourceString length]  - offset;
+    for (int i = 0; i <= [matchRanges count]; i++) {
+        if (i == [matchRanges count]) {
+            length = [sourceString length] - offset;
         }else{
-            length = [matchRanges[index] rangeValue].location - offset;
+            matchRange = [matchRanges[i] rangeValue];
+            length = matchRange.location - offset;
         }
         
-        NSTextCheckingResult *result = [regular firstMatchInString:sourceString
-                                                           options:0
-                                                            range:NSMakeRange(offset, length)];
+        [regular enumerateMatchesInString:sourceString options:0 range:NSMakeRange(offset, length)
+                               usingBlock:^(NSTextCheckingResult *result, NSMatchingFlags flags, BOOL *stop) {
+                                   if ([result numberOfRanges] == 4 && [result rangeAtIndex:2].length != 0 && [result rangeAtIndex:1].length != 0) {
+                                       [dictObject setObject:[sourceString substringWithRange:[result rangeAtIndex:3]]
+                                                      forKey:[sourceString substringWithRange:[result rangeAtIndex:1]]];
+                                   }
+                                   
+        }];
         
-        if (result == nil || result.range.location == NSNotFound) {
-            if (index == [matchRanges count]) {
-                break;
-            }
-            offset = [matchRanges[index] rangeValue].location + [matchRanges[index] rangeValue].length;
-            index ++;
-        }else{
-            if ([result numberOfRanges] == 4 && [result rangeAtIndex:2].length != 0 && [result rangeAtIndex:1].length != 0) {
-                [dictObject setObject:[sourceString substringWithRange:[result rangeAtIndex:3]]
-                               forKey:[sourceString substringWithRange:[result rangeAtIndex:1]]];
-            }
-            
-            offset = result.range.location + result.range.length;
-            
-        }
+        offset = matchRange.location + matchRange.length;
     }
     
-    
+
 //    [regular enumerateMatchesInString:sourceString options:NSMatchingReportCompletion
 //                                range:NSMakeRange(0, [sourceString length])
 //                           usingBlock:^(NSTextCheckingResult *result, NSMatchingFlags flags, BOOL *stop) {
