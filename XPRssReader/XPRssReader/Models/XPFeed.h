@@ -20,5 +20,6 @@
 @property (strong,nonatomic) NSNumber *commentsCount;
 @property (strong,nonatomic) NSString *pubDate;
 @property (strong,nonatomic) NSString *author;
+@property (strong,nonatomic) NSString * imageURL;
 
 @end

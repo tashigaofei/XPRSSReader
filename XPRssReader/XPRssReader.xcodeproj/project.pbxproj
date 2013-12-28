@@ -79,6 +79,9 @@
 		81CE5A22186C189F00217869 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81CE5A21186C189F00217869 /* Security.framework */; };
 		81CE5A24186C18AC00217869 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81CE5A23186C18AC00217869 /* MapKit.framework */; };
 		81CE5A27186C1C2400217869 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 81CE5A26186C1C2400217869 /* libz.dylib */; };
+		81D83757186DD9F700FA94E3 /* XPFeedBrowserVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 81D83756186DD9F700FA94E3 /* XPFeedBrowserVC.m */; };
+		81D8375D186DDAE100FA94E3 /* XPSiteFeedListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 81D8375C186DDAE100FA94E3 /* XPSiteFeedListVC.m */; };
+		81D83760186DDC6700FA94E3 /* XPSiteFeedListTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 81D8375F186DDC6700FA94E3 /* XPSiteFeedListTable.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -220,6 +223,12 @@
 		81CE5A21186C189F00217869 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		81CE5A23186C18AC00217869 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		81CE5A26186C1C2400217869 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		81D83755186DD9F700FA94E3 /* XPFeedBrowserVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XPFeedBrowserVC.h; sourceTree = "<group>"; };
+		81D83756186DD9F700FA94E3 /* XPFeedBrowserVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XPFeedBrowserVC.m; sourceTree = "<group>"; };
+		81D8375B186DDAE100FA94E3 /* XPSiteFeedListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XPSiteFeedListVC.h; sourceTree = "<group>"; };
+		81D8375C186DDAE100FA94E3 /* XPSiteFeedListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XPSiteFeedListVC.m; sourceTree = "<group>"; };
+		81D8375E186DDC6700FA94E3 /* XPSiteFeedListTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XPSiteFeedListTable.h; sourceTree = "<group>"; };
+		81D8375F186DDC6700FA94E3 /* XPSiteFeedListTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XPSiteFeedListTable.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -277,6 +286,12 @@
 			children = (
 				813D7B6E186AEF4D005DA0F8 /* XPSubscriptionsTable.h */,
 				813D7B6F186AEF4D005DA0F8 /* XPSubscriptionsTable.m */,
+				81D83755186DD9F700FA94E3 /* XPFeedBrowserVC.h */,
+				81D83756186DD9F700FA94E3 /* XPFeedBrowserVC.m */,
+				81D8375B186DDAE100FA94E3 /* XPSiteFeedListVC.h */,
+				81D8375C186DDAE100FA94E3 /* XPSiteFeedListVC.m */,
+				81D8375E186DDC6700FA94E3 /* XPSiteFeedListTable.h */,
+				81D8375F186DDC6700FA94E3 /* XPSiteFeedListTable.m */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -672,6 +687,7 @@
 				81CAF8FC186ACF060082B6B4 /* main.m in Sources */,
 				813D7BA2186C1734005DA0F8 /* RXMLElement.m in Sources */,
 				81CAF99A186ADCEB0082B6B4 /* UIScrollView+SVInfiniteScrolling.m in Sources */,
+				81D8375D186DDAE100FA94E3 /* XPSiteFeedListVC.m in Sources */,
 				81CAF98B186ADCEB0082B6B4 /* MBProgressHUD.m in Sources */,
 				81CAF9B7186ADD550082B6B4 /* AFXMLRequestOperation.m in Sources */,
 				81CAF98F186ADCEB0082B6B4 /* SDWebImageCompat.m in Sources */,
@@ -679,6 +695,7 @@
 				81CAF986186ADCEB0082B6B4 /* DDLog.m in Sources */,
 				813D7B6C186ADE84005DA0F8 /* XPHttpClient.m in Sources */,
 				81CAF993186ADCEB0082B6B4 /* SDWebImageManager.m in Sources */,
+				81D83757186DD9F700FA94E3 /* XPFeedBrowserVC.m in Sources */,
 				811253DC186D93700032CC19 /* XPXMLToFeedParser.m in Sources */,
 				81CAF991186ADCEB0082B6B4 /* SDWebImageDownloader.m in Sources */,
 				81CAF98C186ADCEB0082B6B4 /* MKAnnotationView+WebCache.m in Sources */,
@@ -694,6 +711,7 @@
 				81CAF995186ADCEB0082B6B4 /* UIButton+WebCache.m in Sources */,
 				81CAF999186ADCEB0082B6B4 /* UIImageView+WebCache.m in Sources */,
 				81CAF9B1186ADD550082B6B4 /* AFHTTPRequestOperation.m in Sources */,
+				81D83760186DDC6700FA94E3 /* XPSiteFeedListTable.m in Sources */,
 				813D7B7D186AF2B1005DA0F8 /* XPHttpClient+Login.m in Sources */,
 				813D7B8D186BE8E0005DA0F8 /* XPUserManager.m in Sources */,
 				81CAF997186ADCEB0082B6B4 /* UIImage+MultiFormat.m in Sources */,

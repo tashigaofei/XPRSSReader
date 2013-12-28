@@ -14,7 +14,8 @@
 #import "XPHttpClient+Subscription.h"
 #import "XPHttpClient+Feed.h"
 #import "XPSubscriptionsTable.h"
-#import "RSSParser.h"
+
+#import "XPSiteFeedListVC.h"
 
 @interface XPRootViewController ()<XPSubscriptionsTableDelegate>
 {
@@ -28,7 +29,7 @@
 {
     [super loadView];
     
-    _tableView = [[XPSubscriptionsTable alloc] initWithFrame:CGRectMake(0, 0, screenWidth, screenHeight-20-44)];
+    _tableView = [[XPSubscriptionsTable alloc] initWithFrame:CGRectMake(0, 0, screenWidth, screenHeight)];
     _tableView.tableDelegate = self;
     [self.view addSubview:_tableView];
     
@@ -101,20 +102,11 @@
 
 -(void) subscriptionsTable:(XPSubscriptionsTable *) table didSelectAudio:(XPSubscription *) subscription;
 {
-    LogInfo(@"%@", subscription.url);
+    LogInfo(@"enter %@", subscription.url);
     
-//    [RSSParser parseRSSFeedForURL:subscription.url success:^(NSArray *feedItems) {
-////        LogInfo(@"%@", feedItems);
-//    } failure:^(NSError *error) {
-//        LogError(@"%@", error);
-//    }];
-    
-    [[XPHttpClient sharedInstance] getFeedsForURL:subscription.url completion:^(NSArray *feedItems) {
-        LogInfo(@"%@", feedItems);
-    } failure:^(NSError *error) {
-        LogError(@"%@", error);
-    }];
-    
+    XPSiteFeedListVC *vc = [[XPSiteFeedListVC alloc] initWithSubscription:subscription];
+    [self.navigationController pushViewController:vc animated:YES];
+
 }
 
 @end

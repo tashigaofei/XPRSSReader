@@ -8,10 +8,31 @@
 
 #import "XPHttpClient+Feed.h"
 
+@interface NSString (CDATA)
++(NSString *) bareCDATAString:(NSString *) string;
+@end
+
+@implementation NSString(CDATA)
++(NSString *) bareCDATAString:(NSString *) string;
+{
+    NSString *subString = string;
+    if ([subString hasPrefix:@"<![CDATA["]) {
+        subString = [subString substringFromIndex:9];
+    }
+    
+    if ([subString hasSuffix:@"]]>"]) {
+        subString = [subString substringToIndex:[subString length]-3];
+    }
+    
+    return subString;
+}
+
+@end
+
 @implementation XPHttpClient (Feed)
 
 - (void) getFeedsForURL:(NSString *) url
-                   completion:(void (^)(NSArray *feedItems)) completionBlock
+                   completion:(void (^)(NSMutableArray *feedItems)) completionBlock
                    failure:(void (^)(NSError *error))failureBlock;
 {
     
@@ -64,7 +85,8 @@
                                 range:NSMakeRange(0, [sourceString length])
                            usingBlock:^(NSTextCheckingResult *result, NSMatchingFlags flags, BOOL *stop) {
                                if ([result numberOfRanges] == 4 && [result rangeAtIndex:2].length != 0) {
-                                   [array addObject:[sourceString substringWithRange:[result rangeAtIndex:2]]];
+                                   NSString *text = [sourceString substringWithRange:[result rangeAtIndex:2]];
+                                   [array addObject:[NSString bareCDATAString:text]];
                                }
                            }];
     
@@ -90,10 +112,12 @@
                                 range:NSMakeRange(0, [sourceString length])
                            usingBlock:^(NSTextCheckingResult *result, NSMatchingFlags flags, BOOL *stop) {
                                if ([result numberOfRanges] == 3 && [result rangeAtIndex:2].length != 0 && [result rangeAtIndex:1].length != 0) {
-                                   [dictObject setObject:[sourceString substringWithRange:[result rangeAtIndex:2]]
+                                   NSString *text = [sourceString substringWithRange:[result rangeAtIndex:2]];
+                                   [dictObject setObject:[NSString bareCDATAString:text]
                                                   forKey:[sourceString substringWithRange:[result rangeAtIndex:1]]];
                                }
                            }];
+    
     
     //<link href="http://www.iwangke.me/2013/11/14/ios-7-multitask-in-a-nut-shell/"/>
     error = nil;
@@ -120,3 +144,4 @@
 
 
 @end
+

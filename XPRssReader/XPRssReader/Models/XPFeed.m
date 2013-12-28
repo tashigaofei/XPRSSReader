@@ -29,7 +29,7 @@
         return;
     }
     if ([key isEqualToString:@"content:encoded"] || [key isEqualToString:@"content"]) {
-        self.title = value;
+        self.content = value;
         return;
     }
     if ([key isEqualToString:@"comments"]) {
@@ -57,6 +57,17 @@
     
 }
 
+-(NSString*) imageURL;
+{
+    if (_imageURL == nil) {
+        NSArray *imageURLs = [self imagesFromContent];
+        if ([imageURLs count] > 0) {
+            _imageURL = imageURLs[0];
+        }
+    }
+    
+    return _imageURL;
+}
 
 -(NSArray *)imagesFromItemDescription
 {
@@ -67,7 +78,7 @@
     return nil;
 }
 
--(NSArray *)imagesFromContent
+-(NSArray *)imagesFromContent;
 {
     if (self.content) {
         return [self imagesFromHTMLString:self.content];
@@ -85,7 +96,7 @@
     NSError *error;
     
     NSRegularExpression *regex = [NSRegularExpression
-                                  regularExpressionWithPattern:@"(https?)\\S*(png|jpg|jpeg|gif)"
+                                  regularExpressionWithPattern:@"((https|http)?)\\S*(png|jpg|jpeg|gif)"
                                   options:NSRegularExpressionCaseInsensitive
                                   error:&error];
     
