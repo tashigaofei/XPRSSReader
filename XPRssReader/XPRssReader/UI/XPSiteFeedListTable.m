@@ -35,7 +35,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath;
 {
-    return 44;
+    return 60;
 }
 
 - (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -47,7 +47,7 @@
     }
     
     XPFeed *object = _tableDataSource[indexPath.row];
-    [cell.imageView setImageWithURL:[NSURL URLWithString:object.imageURL]];
+//    [cell.imageView setImageWithURL:[NSURL URLWithString:object.imageURL]];
     cell.textLabel.text = object.title;
     cell.textLabel.numberOfLines = 0;
     cell.textLabel.font = [UIFont boldSystemFontOfSize:14.0];

@@ -22,6 +22,7 @@
 #import "XPHttpClient.h"
 #import "UIImageView+WebCache.h"
 #import "UIButton+WebCache.h"
+#import "MBProgressHUD.h"
 
 #endif
 

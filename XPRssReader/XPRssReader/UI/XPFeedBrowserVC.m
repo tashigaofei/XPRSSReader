@@ -21,13 +21,14 @@
     self = [super init];
     if (self) {
         self.feed = feed;
+        _textFontSize = 300;
     }
     return self;
 }
 
 -(void) loadView;
 {
-    _webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, screenWidth, screenHeight)];
+    _webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, screenWidth, screenHeight-20-44)];
     _webView.scalesPageToFit = YES;
     _webView.delegate = self;
     self.view = _webView;
@@ -55,7 +56,7 @@
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView;
 {
-    self.textFontSize = 260;
+    self.textFontSize = self.textFontSize;
 }
 
 - (void)didReceiveMemoryWarning

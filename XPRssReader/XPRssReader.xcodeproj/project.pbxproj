@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		811253DC186D93700032CC19 /* XPXMLToFeedParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 811253DB186D93700032CC19 /* XPXMLToFeedParser.m */; };
 		813D7B63186ADE16005DA0F8 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 813D7B62186ADE16005DA0F8 /* MobileCoreServices.framework */; };
 		813D7B65186ADE1F005DA0F8 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 813D7B64186ADE1F005DA0F8 /* QuartzCore.framework */; };
 		813D7B6C186ADE84005DA0F8 /* XPHttpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 813D7B6A186ADE84005DA0F8 /* XPHttpClient.m */; };
@@ -82,6 +81,7 @@
 		81D83757186DD9F700FA94E3 /* XPFeedBrowserVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 81D83756186DD9F700FA94E3 /* XPFeedBrowserVC.m */; };
 		81D8375D186DDAE100FA94E3 /* XPSiteFeedListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 81D8375C186DDAE100FA94E3 /* XPSiteFeedListVC.m */; };
 		81D83760186DDC6700FA94E3 /* XPSiteFeedListTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 81D8375F186DDC6700FA94E3 /* XPSiteFeedListTable.m */; };
+		81D83763186DFA3B00FA94E3 /* XPFeedsCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 81D83762186DFA3B00FA94E3 /* XPFeedsCache.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,8 +95,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		811253DA186D93700032CC19 /* XPXMLToFeedParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XPXMLToFeedParser.h; sourceTree = "<group>"; };
-		811253DB186D93700032CC19 /* XPXMLToFeedParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XPXMLToFeedParser.m; sourceTree = "<group>"; };
 		813D7B62186ADE16005DA0F8 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		813D7B64186ADE1F005DA0F8 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		813D7B69186ADE84005DA0F8 /* XPHttpClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XPHttpClient.h; sourceTree = "<group>"; };
@@ -229,6 +227,8 @@
 		81D8375C186DDAE100FA94E3 /* XPSiteFeedListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XPSiteFeedListVC.m; sourceTree = "<group>"; };
 		81D8375E186DDC6700FA94E3 /* XPSiteFeedListTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XPSiteFeedListTable.h; sourceTree = "<group>"; };
 		81D8375F186DDC6700FA94E3 /* XPSiteFeedListTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XPSiteFeedListTable.m; sourceTree = "<group>"; };
+		81D83761186DFA3B00FA94E3 /* XPFeedsCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XPFeedsCache.h; sourceTree = "<group>"; };
+		81D83762186DFA3B00FA94E3 /* XPFeedsCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XPFeedsCache.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -299,14 +299,14 @@
 		813D7B71186AF014005DA0F8 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				813D7B72186AF014005DA0F8 /* XPModel.h */,
-				813D7B73186AF014005DA0F8 /* XPModel.m */,
-				813D7B78186AF03D005DA0F8 /* XPSubscription.h */,
-				813D7B79186AF03D005DA0F8 /* XPSubscription.m */,
-				813D7B81186AF2E9005DA0F8 /* XPOldReaderUser.h */,
-				813D7B82186AF2E9005DA0F8 /* XPOldReaderUser.m */,
 				813D7B99186C15F8005DA0F8 /* XPFeed.h */,
 				813D7B9A186C15F8005DA0F8 /* XPFeed.m */,
+				813D7B72186AF014005DA0F8 /* XPModel.h */,
+				813D7B73186AF014005DA0F8 /* XPModel.m */,
+				813D7B81186AF2E9005DA0F8 /* XPOldReaderUser.h */,
+				813D7B82186AF2E9005DA0F8 /* XPOldReaderUser.m */,
+				813D7B78186AF03D005DA0F8 /* XPSubscription.h */,
+				813D7B79186AF03D005DA0F8 /* XPSubscription.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -316,8 +316,8 @@
 			children = (
 				813D7B8B186BE8E0005DA0F8 /* XPUserManager.h */,
 				813D7B8C186BE8E0005DA0F8 /* XPUserManager.m */,
-				811253DA186D93700032CC19 /* XPXMLToFeedParser.h */,
-				811253DB186D93700032CC19 /* XPXMLToFeedParser.m */,
+				81D83761186DFA3B00FA94E3 /* XPFeedsCache.h */,
+				81D83762186DFA3B00FA94E3 /* XPFeedsCache.m */,
 			);
 			path = Assistance;
 			sourceTree = "<group>";
@@ -696,7 +696,6 @@
 				813D7B6C186ADE84005DA0F8 /* XPHttpClient.m in Sources */,
 				81CAF993186ADCEB0082B6B4 /* SDWebImageManager.m in Sources */,
 				81D83757186DD9F700FA94E3 /* XPFeedBrowserVC.m in Sources */,
-				811253DC186D93700032CC19 /* XPXMLToFeedParser.m in Sources */,
 				81CAF991186ADCEB0082B6B4 /* SDWebImageDownloader.m in Sources */,
 				81CAF98C186ADCEB0082B6B4 /* MKAnnotationView+WebCache.m in Sources */,
 				813D7B76186AF014005DA0F8 /* XPModel.m in Sources */,
@@ -716,6 +715,7 @@
 				813D7B8D186BE8E0005DA0F8 /* XPUserManager.m in Sources */,
 				81CAF997186ADCEB0082B6B4 /* UIImage+MultiFormat.m in Sources */,
 				81CAF990186ADCEB0082B6B4 /* SDWebImageDecoder.m in Sources */,
+				81D83763186DFA3B00FA94E3 /* XPFeedsCache.m in Sources */,
 				81CAF982186ADCEB0082B6B4 /* JSONKit.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -845,6 +845,7 @@
 				INFOPLIST_FILE = "XPRssReader/XPRssReader-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -864,6 +865,7 @@
 				INFOPLIST_FILE = "XPRssReader/XPRssReader-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

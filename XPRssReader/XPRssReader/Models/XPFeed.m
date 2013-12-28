@@ -10,6 +10,16 @@
 
 @implementation XPFeed
 
+- (id)initWithDictionary:(NSDictionary *) dic;
+{
+    self = [super initWithDictionary:dic];
+    if (self) {
+        self.content = self.content == nil ? self.objectDescription : self.content;
+    }
+    
+    return self;
+}
+
 - (void)setValue:(id)value forKey:(NSString *)key
 {
     if ([key isEqualToString:@"id"] || [key isEqualToString:@"guid"]) {
@@ -109,17 +119,6 @@
     
     return [NSArray arrayWithArray:imagesURLStringArray];
 }
-
-@synthesize title;
-@synthesize objectDescription;
-@synthesize content;
-@synthesize link;
-@synthesize objectID;
-@synthesize commentsLink;
-@synthesize commentsFeed;
-@synthesize commentsCount;
-@synthesize pubDate;
-@synthesize author;
 
 //===========================================================
 // - (NSArray *)keyPaths

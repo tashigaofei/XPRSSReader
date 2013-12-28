@@ -30,7 +30,7 @@
 {
     [super loadView];
     
-    _tableView = [[XPSiteFeedListTable alloc] initWithFrame:CGRectMake(0, 0, screenWidth, screenHeight)];
+    _tableView = [[XPSiteFeedListTable alloc] initWithFrame:CGRectMake(0, 0, screenWidth, screenHeight-20-44)];
     _tableView.tableDelegate = self;
     [self.view addSubview:_tableView];
     
@@ -40,12 +40,16 @@
 {
     [super viewDidLoad];
     
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    
     [[XPHttpClient sharedInstance] getFeedsForURL:_subscription.url completion:^(NSMutableArray *feedItems) {
         [_tableView setTableDataSource:feedItems];
         [_tableView reloadData];
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
         
     } failure:^(NSError *error) {
         LogError(@"%@", error);
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
     }];
     
 }

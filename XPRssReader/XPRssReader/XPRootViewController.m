@@ -29,7 +29,7 @@
 {
     [super loadView];
     
-    _tableView = [[XPSubscriptionsTable alloc] initWithFrame:CGRectMake(0, 0, screenWidth, screenHeight)];
+    _tableView = [[XPSubscriptionsTable alloc] initWithFrame:CGRectMake(0, 0, screenWidth, screenHeight-20-44)];
     _tableView.tableDelegate = self;
     [self.view addSubview:_tableView];
     
