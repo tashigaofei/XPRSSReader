@@ -8,7 +8,7 @@
 
 #import "XPFeedBrowserVC.h"
 
-@interface XPFeedBrowserVC ()
+@interface XPFeedBrowserVC ()<UIWebViewDelegate>
 @property (nonatomic, strong) XPFeed *feed;
 @property (nonatomic, strong) UIWebView * webView;
 @property (nonatomic, assign) int textFontSize;
@@ -29,6 +29,7 @@
 {
     _webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, screenWidth, screenHeight)];
     _webView.scalesPageToFit = YES;
+    _webView.delegate = self;
     self.view = _webView;
 }
 
@@ -49,8 +50,12 @@
     [super viewDidAppear:animated];
 
     [self.webView loadHTMLString:[NSString stringWithFormat:@"<html><body>%@</body></html>", _feed.content] baseURL:nil];
+    
+}
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView;
+{
     self.textFontSize = 260;
-   
 }
 
 - (void)didReceiveMemoryWarning
