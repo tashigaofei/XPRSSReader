@@ -82,7 +82,6 @@
 		81D8375D186DDAE100FA94E3 /* XPSiteFeedListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 81D8375C186DDAE100FA94E3 /* XPSiteFeedListVC.m */; };
 		81D83760186DDC6700FA94E3 /* XPSiteFeedListTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 81D8375F186DDC6700FA94E3 /* XPSiteFeedListTable.m */; };
 		81D83763186DFA3B00FA94E3 /* XPFeedsCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 81D83762186DFA3B00FA94E3 /* XPFeedsCache.m */; };
-		81D83769186F029500FA94E3 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 81D83765186F029500FA94E3 /* .gitignore */; };
 		81D8376A186F029500FA94E3 /* readability-print.css in Resources */ = {isa = PBXBuildFile; fileRef = 81D83766186F029500FA94E3 /* readability-print.css */; };
 		81D8376B186F029500FA94E3 /* readability.css in Resources */ = {isa = PBXBuildFile; fileRef = 81D83767186F029500FA94E3 /* readability.css */; };
 		81D8376C186F029500FA94E3 /* readability.js in Resources */ = {isa = PBXBuildFile; fileRef = 81D83768186F029500FA94E3 /* readability.js */; };
@@ -668,7 +667,6 @@
 				81CAF908186ACF060082B6B4 /* Images.xcassets in Resources */,
 				81CAF98A186ADCEB0082B6B4 /* README.txt in Resources */,
 				81CAF8FA186ACF060082B6B4 /* InfoPlist.strings in Resources */,
-				81D83769186F029500FA94E3 /* .gitignore in Resources */,
 				813D7B91186C0010005DA0F8 /* icon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
