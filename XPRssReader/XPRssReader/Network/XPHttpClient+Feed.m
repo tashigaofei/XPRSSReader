@@ -38,7 +38,7 @@
     CFAbsoluteTime time = CFAbsoluteTimeGetCurrent();
     [[XPHttpClient sharedInstance] getPath:url parameters:nil
                                    success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                                       LogError(@"%s API finish %f", __func__, CFAbsoluteTimeGetCurrent() - time);
+                                       LogError(@"API finish %f", CFAbsoluteTimeGetCurrent() - time);
                                   
                                        
                                        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
@@ -50,10 +50,7 @@
                                            
                                            NSMutableArray *array = [NSMutableArray array];
                                            NSArray *feedXMLs = [[self class] getFeedStringList:responseString];
-                                           
-                                           LogError(@"Parse complete %f", CFAbsoluteTimeGetCurrent() - time);
-                                           time = CFAbsoluteTimeGetCurrent();
-                                           
+                                        
                                            for (int i = 0; i < [feedXMLs count]; i++) {
                                                NSString *feedXML = feedXMLs[i];
                                                XPFeed *feed = [[XPFeed alloc] initWithDictionary:[[self class] getObjectFromXMLString:feedXML]];
@@ -104,15 +101,23 @@
     return array;
 }
 
++(NSString *) keyTagsString;
+{
+    NSString *string = [[XPFeed keyTags] componentsJoinedByString:@"|"];
+#ifdef DEBUG
+    string = [NSString stringWithFormat:@"%@|\\S+", string];
+#endif
+    return string;
+}
 
 +(NSDictionary*) getObjectFromXMLString:(NSString *) sourceString;
 {
-    CFAbsoluteTime time = CFAbsoluteTimeGetCurrent();
-    
-    
+   
     //<title type="html"><![CDATA[iOS 7多任务概要 - 产品经理/工程师版本]]></title>
+   
+    NSString *regularExpression = [NSString stringWithFormat:@"<\\b(%@)\\b[^>]*>([\\s\\S]*?)</\\1>",[[self class] keyTagsString]];
     NSError *error;
-    NSRegularExpression *regular = [[NSRegularExpression alloc] initWithPattern:@"<\\b(\\S+)\\b[^>]*>([\\s\\S]*?)</\\1>"
+    NSRegularExpression *regular = [[NSRegularExpression alloc] initWithPattern: regularExpression
                                                                         options:NSRegularExpressionCaseInsensitive
                                                                           error:&error];
     if (error) {
@@ -133,19 +138,17 @@
                                }
                            }];
     
-    LogError(@"++++++      %f", CFAbsoluteTimeGetCurrent() - time);
-    time = CFAbsoluteTimeGetCurrent();
-    
     //<link href="http://www.iwangke.me/2013/11/14/ios-7-multitask-in-a-nut-shell/"/>
+  
+    regularExpression = [NSString stringWithFormat:@"<\\b(%@)\\b([^>]*?)=([^>]*)/>",[[self class] keyTagsString]];
     error = nil;
-    regular = [[NSRegularExpression alloc] initWithPattern:@"<\\b(\\S+)\\b([^>]*?)=([^>]*)/>"
+    regular = [[NSRegularExpression alloc] initWithPattern:regularExpression
                                                                         options:NSRegularExpressionCaseInsensitive
                                                                           error:&error];
     if (error) {
         LogError(@"%@", error);
         NSAssert(0, @"error");
     }
-    
     
     NSUInteger length = 0;
     NSUInteger offset = 0;
@@ -170,18 +173,6 @@
         
         offset = matchRange.location + matchRange.length;
     }
-    
-
-//    [regular enumerateMatchesInString:sourceString options:NSMatchingReportCompletion
-//                                range:NSMakeRange(0, [sourceString length])
-//                           usingBlock:^(NSTextCheckingResult *result, NSMatchingFlags flags, BOOL *stop) {
-//                               if ([result numberOfRanges] == 4 && [result rangeAtIndex:2].length != 0 && [result rangeAtIndex:1].length != 0) {
-//                                   [dictObject setObject:[sourceString substringWithRange:[result rangeAtIndex:3]]
-//                                                  forKey:[sourceString substringWithRange:[result rangeAtIndex:1]]];
-//                               }
-//                           }];
-    
-    LogError(@"++++++++++++++++++      %f", CFAbsoluteTimeGetCurrent() - time);
     
     return dictObject;
 }

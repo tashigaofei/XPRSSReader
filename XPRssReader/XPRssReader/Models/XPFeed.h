@@ -22,4 +22,6 @@
 @property (strong,nonatomic) NSString *author;
 @property (strong,nonatomic) NSString * imageURL;
 
++ (NSArray *) keyTags;
+
 @end

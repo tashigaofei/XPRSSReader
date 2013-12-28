@@ -20,6 +20,29 @@
     return self;
 }
 
++ (NSArray *)keyTags;
+{
+    NSArray *result = [NSArray arrayWithObjects:
+                       @"id",
+                       @"guid",
+                       @"title",
+                       @"description",
+                       @"link",
+                       @"objectID",
+                       @"content:encoded",
+                       @"content",
+                       @"comments",
+                       @"wfw:commentRss",
+                       @"slash:comments",
+                       @"pubDate",
+                       @"published",
+                       @"dc:creator",
+                       nil];
+    
+    return result;
+}
+
+
 - (void)setValue:(id)value forKey:(NSString *)key
 {
     if ([key isEqualToString:@"id"] || [key isEqualToString:@"guid"]) {
