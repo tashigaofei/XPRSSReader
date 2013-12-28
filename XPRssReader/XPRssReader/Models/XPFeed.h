@@ -18,7 +18,8 @@
 @property (strong,nonatomic) NSURL *commentsLink;
 @property (strong,nonatomic) NSURL *commentsFeed;
 @property (strong,nonatomic) NSNumber *commentsCount;
-@property (strong,nonatomic) NSString *pubDate;
+@property (strong,nonatomic) NSString *publishDate;
+@property (strong,nonatomic) NSString *updateDate;
 @property (strong,nonatomic) NSString *author;
 @property (strong,nonatomic) NSString * imageURL;
 

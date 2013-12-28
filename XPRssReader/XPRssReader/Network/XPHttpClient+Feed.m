@@ -40,7 +40,6 @@
                                    success:^(AFHTTPRequestOperation *operation, id responseObject) {
                                        LogError(@"API finish %f", CFAbsoluteTimeGetCurrent() - time);
                                   
-                                       
                                        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
                                            
                                            CFAbsoluteTime time = CFAbsoluteTimeGetCurrent();
