@@ -20,6 +20,16 @@
     return self;
 }
 
+-(NSDictionary *) dictionaryRepresention;
+{
+    return [self dictionaryWithValuesForKeys:[self keyPaths]];
+}
+
+- (id)valueForKey:(NSString *)key;
+{
+    return  [[super valueForKey:key] description];
+}
+
 - (void)setValue:(id)value forUndefinedKey:(NSString *)key
 {
     

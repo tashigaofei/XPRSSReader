@@ -147,6 +147,30 @@
     
     return [NSArray arrayWithArray:imagesURLStringArray];
 }
+//===========================================================
+// - (NSArray *)keyPaths
+//
+//===========================================================
+- (NSArray *)keyPaths
+{
+    NSArray *result = [NSArray arrayWithObjects:
+                       @"title",
+                       @"objectDescription",
+                       @"content",
+                       @"link",
+                       @"objectID",
+                       @"commentsLink",
+                       @"commentsFeed",
+                       @"commentsCount",
+                       @"publishDate",
+                       @"updateDate",
+                       @"author",
+                       @"imageURL",
+                       nil];
+    
+    return result;
+}
+
 
 //===========================================================
 //  Keyed Archiving
@@ -186,6 +210,28 @@
         self.imageURL = [decoder decodeObjectForKey:@"imageURL"];
     }
     return self;
+}
+
+//===========================================================
+// - (NSString *)descriptionForKeyPaths
+//
+//===========================================================
+- (NSString *)descriptionForKeyPaths
+{
+    NSMutableString *desc = [NSMutableString string];
+    [desc appendString:@"\n\n"];
+    [desc appendFormat:@"Class name: %@\n", NSStringFromClass([self class])];
+    
+    NSArray *keyPathsArray = [self keyPaths];
+    for (NSString *keyPath in keyPathsArray) {
+        [desc appendFormat: @"%@: %@\n", keyPath, [self valueForKey:keyPath]];
+    }
+    
+    return [NSString stringWithString:desc];
+}
+- (NSString *)description 
+{
+    return [self descriptionForKeyPaths]; 
 }
 
 #pragma mark -

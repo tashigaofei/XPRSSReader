@@ -11,6 +11,7 @@
 @interface XPModel : NSObject
 
 - (id)initWithDictionary:(NSDictionary *) dic;
+-(NSDictionary *) dictionaryRepresention;
 -(NSArray *)keyPaths;
 
 @end
