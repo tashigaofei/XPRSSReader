@@ -24,6 +24,10 @@
 		813D7B9E186C166E005DA0F8 /* XPHttpClient+Feed.m in Sources */ = {isa = PBXBuildFile; fileRef = 813D7B9D186C166E005DA0F8 /* XPHttpClient+Feed.m */; };
 		813D7BA2186C1734005DA0F8 /* RXMLElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 813D7BA1186C1734005DA0F8 /* RXMLElement.m */; };
 		813D7BA4186C1750005DA0F8 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 813D7BA3186C1750005DA0F8 /* libxml2.dylib */; };
+		8171B488186F24E200126BFD /* readability-print.css in Resources */ = {isa = PBXBuildFile; fileRef = 8171B484186F24E200126BFD /* readability-print.css */; };
+		8171B489186F24E200126BFD /* readability.css in Resources */ = {isa = PBXBuildFile; fileRef = 8171B485186F24E200126BFD /* readability.css */; };
+		8171B48A186F24E200126BFD /* readability.js in Resources */ = {isa = PBXBuildFile; fileRef = 8171B486186F24E200126BFD /* readability.js */; };
+		8171B48B186F24E200126BFD /* web.html in Resources */ = {isa = PBXBuildFile; fileRef = 8171B487186F24E200126BFD /* web.html */; };
 		81CAF8F0186ACF060082B6B4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81CAF8EF186ACF060082B6B4 /* Foundation.framework */; };
 		81CAF8F2186ACF060082B6B4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81CAF8F1186ACF060082B6B4 /* CoreGraphics.framework */; };
 		81CAF8F4186ACF060082B6B4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81CAF8F3186ACF060082B6B4 /* UIKit.framework */; };
@@ -82,9 +86,6 @@
 		81D8375D186DDAE100FA94E3 /* XPSiteFeedListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 81D8375C186DDAE100FA94E3 /* XPSiteFeedListVC.m */; };
 		81D83760186DDC6700FA94E3 /* XPSiteFeedListTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 81D8375F186DDC6700FA94E3 /* XPSiteFeedListTable.m */; };
 		81D83763186DFA3B00FA94E3 /* XPFeedsCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 81D83762186DFA3B00FA94E3 /* XPFeedsCache.m */; };
-		81D8376A186F029500FA94E3 /* readability-print.css in Resources */ = {isa = PBXBuildFile; fileRef = 81D83766186F029500FA94E3 /* readability-print.css */; };
-		81D8376B186F029500FA94E3 /* readability.css in Resources */ = {isa = PBXBuildFile; fileRef = 81D83767186F029500FA94E3 /* readability.css */; };
-		81D8376C186F029500FA94E3 /* readability.js in Resources */ = {isa = PBXBuildFile; fileRef = 81D83768186F029500FA94E3 /* readability.js */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -128,6 +129,10 @@
 		813D7BA1186C1734005DA0F8 /* RXMLElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RXMLElement.m; sourceTree = "<group>"; };
 		813D7BA3186C1750005DA0F8 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		813D7BA5186C1774005DA0F8 /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
+		8171B484186F24E200126BFD /* readability-print.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = "readability-print.css"; sourceTree = "<group>"; };
+		8171B485186F24E200126BFD /* readability.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = readability.css; sourceTree = "<group>"; };
+		8171B486186F24E200126BFD /* readability.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = readability.js; sourceTree = "<group>"; };
+		8171B487186F24E200126BFD /* web.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = web.html; sourceTree = "<group>"; };
 		81CAF8EC186ACF060082B6B4 /* XPRssReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XPRssReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		81CAF8EF186ACF060082B6B4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		81CAF8F1186ACF060082B6B4 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -232,10 +237,6 @@
 		81D8375F186DDC6700FA94E3 /* XPSiteFeedListTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XPSiteFeedListTable.m; sourceTree = "<group>"; };
 		81D83761186DFA3B00FA94E3 /* XPFeedsCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XPFeedsCache.h; sourceTree = "<group>"; };
 		81D83762186DFA3B00FA94E3 /* XPFeedsCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XPFeedsCache.m; sourceTree = "<group>"; };
-		81D83765186F029500FA94E3 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
-		81D83766186F029500FA94E3 /* readability-print.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = "readability-print.css"; sourceTree = "<group>"; };
-		81D83767186F029500FA94E3 /* readability.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = readability.css; sourceTree = "<group>"; };
-		81D83768186F029500FA94E3 /* readability.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = readability.js; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -338,6 +339,17 @@
 			path = RaptureXML;
 			sourceTree = "<group>";
 		};
+		8171B483186F24E200126BFD /* Readability-js */ = {
+			isa = PBXGroup;
+			children = (
+				8171B484186F24E200126BFD /* readability-print.css */,
+				8171B485186F24E200126BFD /* readability.css */,
+				8171B486186F24E200126BFD /* readability.js */,
+				8171B487186F24E200126BFD /* web.html */,
+			);
+			path = "Readability-js";
+			sourceTree = "<group>";
+		};
 		81CAF8E3186ACF060082B6B4 = {
 			isa = PBXGroup;
 			children = (
@@ -430,7 +442,7 @@
 		81CAF941186ADCEB0082B6B4 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
-				81D83764186F029500FA94E3 /* Readability-js */,
+				8171B483186F24E200126BFD /* Readability-js */,
 				813D7B9F186C1734005DA0F8 /* RaptureXML */,
 				81CAF942186ADCEB0082B6B4 /* AFDownloadRequestOperation */,
 				81CAF99C186ADD550082B6B4 /* AFNetworking */,
@@ -572,17 +584,6 @@
 			path = AFNetworking;
 			sourceTree = "<group>";
 		};
-		81D83764186F029500FA94E3 /* Readability-js */ = {
-			isa = PBXGroup;
-			children = (
-				81D83765186F029500FA94E3 /* .gitignore */,
-				81D83766186F029500FA94E3 /* readability-print.css */,
-				81D83767186F029500FA94E3 /* readability.css */,
-				81D83768186F029500FA94E3 /* readability.js */,
-			);
-			path = "Readability-js";
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -660,13 +661,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				81D8376B186F029500FA94E3 /* readability.css in Resources */,
-				81D8376C186F029500FA94E3 /* readability.js in Resources */,
 				813D7B90186C0010005DA0F8 /* icon.png in Resources */,
-				81D8376A186F029500FA94E3 /* readability-print.css in Resources */,
+				8171B48A186F24E200126BFD /* readability.js in Resources */,
+				8171B48B186F24E200126BFD /* web.html in Resources */,
 				81CAF908186ACF060082B6B4 /* Images.xcassets in Resources */,
 				81CAF98A186ADCEB0082B6B4 /* README.txt in Resources */,
 				81CAF8FA186ACF060082B6B4 /* InfoPlist.strings in Resources */,
+				8171B489186F24E200126BFD /* readability.css in Resources */,
+				8171B488186F24E200126BFD /* readability-print.css in Resources */,
 				813D7B91186C0010005DA0F8 /* icon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

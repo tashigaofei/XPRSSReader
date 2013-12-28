@@ -21,7 +21,7 @@
     self = [super init];
     if (self) {
         self.feed = feed;
-        _textFontSize = 300;
+        _textFontSize = 100;
     }
     return self;
 }
@@ -41,7 +41,6 @@
                                                                               style:UIBarButtonItemStylePlain
                                                                              target:self
                                                                              action:@selector(changeWevViewFontSize:)];
-    self.navigationItem.rightBarButtonItem.tag = 10000 + 2;
 }
 
 
@@ -50,13 +49,25 @@
 {
     [super viewDidAppear:animated];
 
-    [self.webView loadHTMLString:[NSString stringWithFormat:@"<html><body>%@</body></html>", _feed.content] baseURL:nil];
+//    <script type=\"text/javascript\" src=\"readability.js\"></script>\
+//    <link href=\"readability.css\" rel=\"stylesheet\"/>\
+    
+    NSString *html =[NSString stringWithFormat:@"<html>\
+                     <style type=\"text/css\">\
+                     body {background-color: white;font-size:50px;margin-left:40px;}\
+                     p {margin-left: 20px}\
+                     </style>\
+                     <body>%@</body>\
+                     </html>\
+                     ", _feed.content];
+   NSString *basePath = [[NSBundle mainBundle] bundlePath];
+    [self.webView loadHTMLString:html baseURL:[NSURL fileURLWithPath:basePath]];
     
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView;
 {
-    self.textFontSize = self.textFontSize;
+//    self.textFontSize = self.textFontSize;
 }
 
 - (void)didReceiveMemoryWarning
@@ -77,13 +88,9 @@
 
 - (void) changeWevViewFontSize:(id)sender
 {
-    switch ([sender tag]-10000) {
-        case 1: // A-
-            self.textFontSize = self.textFontSize -10;
-            break;
-        case 2: // A+
-            self.textFontSize = self.textFontSize +10;
-            break;
+    self.textFontSize = self.textFontSize +10;
+    if (self.textFontSize > 300) {
+        self.textFontSize = 100;
     }
 }
 
