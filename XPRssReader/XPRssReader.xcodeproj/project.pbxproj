@@ -28,6 +28,8 @@
 		8171B489186F24E200126BFD /* readability.css in Resources */ = {isa = PBXBuildFile; fileRef = 8171B485186F24E200126BFD /* readability.css */; };
 		8171B48A186F24E200126BFD /* readability.js in Resources */ = {isa = PBXBuildFile; fileRef = 8171B486186F24E200126BFD /* readability.js */; };
 		8171B48B186F24E200126BFD /* web.html in Resources */ = {isa = PBXBuildFile; fileRef = 8171B487186F24E200126BFD /* web.html */; };
+		817C75D21870527000E58861 /* GTMNSString+HTML.m in Sources */ = {isa = PBXBuildFile; fileRef = 817C75D11870527000E58861 /* GTMNSString+HTML.m */; };
+		817C75D518707CDF00E58861 /* NSString+CDATA.m in Sources */ = {isa = PBXBuildFile; fileRef = 817C75D418707CDF00E58861 /* NSString+CDATA.m */; };
 		81CAF8F0186ACF060082B6B4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81CAF8EF186ACF060082B6B4 /* Foundation.framework */; };
 		81CAF8F2186ACF060082B6B4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81CAF8F1186ACF060082B6B4 /* CoreGraphics.framework */; };
 		81CAF8F4186ACF060082B6B4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81CAF8F3186ACF060082B6B4 /* UIKit.framework */; };
@@ -133,6 +135,10 @@
 		8171B485186F24E200126BFD /* readability.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = readability.css; sourceTree = "<group>"; };
 		8171B486186F24E200126BFD /* readability.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = readability.js; sourceTree = "<group>"; };
 		8171B487186F24E200126BFD /* web.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = web.html; sourceTree = "<group>"; };
+		817C75D01870527000E58861 /* GTMNSString+HTML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GTMNSString+HTML.h"; sourceTree = "<group>"; };
+		817C75D11870527000E58861 /* GTMNSString+HTML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GTMNSString+HTML.m"; sourceTree = "<group>"; };
+		817C75D318707CDF00E58861 /* NSString+CDATA.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+CDATA.h"; sourceTree = "<group>"; };
+		817C75D418707CDF00E58861 /* NSString+CDATA.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+CDATA.m"; sourceTree = "<group>"; };
 		81CAF8EC186ACF060082B6B4 /* XPRssReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XPRssReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		81CAF8EF186ACF060082B6B4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		81CAF8F1186ACF060082B6B4 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -350,6 +356,17 @@
 			path = "Readability-js";
 			sourceTree = "<group>";
 		};
+		817C75CF1870527000E58861 /* Additions */ = {
+			isa = PBXGroup;
+			children = (
+				817C75D01870527000E58861 /* GTMNSString+HTML.h */,
+				817C75D11870527000E58861 /* GTMNSString+HTML.m */,
+				817C75D318707CDF00E58861 /* NSString+CDATA.h */,
+				817C75D418707CDF00E58861 /* NSString+CDATA.m */,
+			);
+			path = Additions;
+			sourceTree = "<group>";
+		};
 		81CAF8E3186ACF060082B6B4 = {
 			isa = PBXGroup;
 			children = (
@@ -442,6 +459,7 @@
 		81CAF941186ADCEB0082B6B4 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				817C75CF1870527000E58861 /* Additions */,
 				8171B483186F24E200126BFD /* Readability-js */,
 				813D7B9F186C1734005DA0F8 /* RaptureXML */,
 				81CAF942186ADCEB0082B6B4 /* AFDownloadRequestOperation */,
@@ -717,6 +735,7 @@
 				81CAF98F186ADCEB0082B6B4 /* SDWebImageCompat.m in Sources */,
 				81CAF98D186ADCEB0082B6B4 /* NSData+GIF.m in Sources */,
 				81CAF986186ADCEB0082B6B4 /* DDLog.m in Sources */,
+				817C75D21870527000E58861 /* GTMNSString+HTML.m in Sources */,
 				813D7B6C186ADE84005DA0F8 /* XPHttpClient.m in Sources */,
 				81CAF993186ADCEB0082B6B4 /* SDWebImageManager.m in Sources */,
 				81D83757186DD9F700FA94E3 /* XPFeedBrowserVC.m in Sources */,
@@ -725,6 +744,7 @@
 				813D7B76186AF014005DA0F8 /* XPModel.m in Sources */,
 				81CAF996186ADCEB0082B6B4 /* UIImage+GIF.m in Sources */,
 				81CAF984186ADCEB0082B6B4 /* DDASLLogger.m in Sources */,
+				817C75D518707CDF00E58861 /* NSString+CDATA.m in Sources */,
 				81CAF9B4186ADD550082B6B4 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				813D7B9E186C166E005DA0F8 /* XPHttpClient+Feed.m in Sources */,
 				81CAF994186ADCEB0082B6B4 /* SDWebImagePrefetcher.m in Sources */,

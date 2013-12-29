@@ -7,27 +7,7 @@
 //
 
 #import "XPHttpClient+Feed.h"
-
-@interface NSString (CDATA)
-+(NSString *) bareCDATAString:(NSString *) string;
-@end
-
-@implementation NSString(CDATA)
-+(NSString *) bareCDATAString:(NSString *) string;
-{
-    NSString *subString = string;
-    if ([subString hasPrefix:@"<![CDATA["]) {
-        subString = [subString substringFromIndex:9];
-    }
-    
-    if ([subString hasSuffix:@"]]>"]) {
-        subString = [subString substringToIndex:[subString length]-3];
-    }
-    
-    return subString;
-}
-
-@end
+#import "NSString+CDATA.h"
 
 @implementation XPHttpClient (Feed)
 
@@ -43,13 +23,15 @@
                                        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
                                            
                                            CFAbsoluteTime time = CFAbsoluteTimeGetCurrent();
-                                       
                                            NSString *responseString = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
+                                           responseString = [NSString bareCDATAString:responseString];
                                            LogDebug(@"%@", responseString);
-                                           
+                                   
                                            NSMutableArray *array = [NSMutableArray array];
                                            NSArray *feedXMLs = [[self class] getFeedStringList:responseString];
                                         
+                                           LogError(@"getFeedStringList complete %f", CFAbsoluteTimeGetCurrent() - time);
+                                           
                                            for (int i = 0; i < [feedXMLs count]; i++) {
                                                NSString *feedXML = feedXMLs[i];
                                                XPFeed *feed = [[XPFeed alloc] initWithDictionary:[[self class] getObjectFromXMLString:feedXML]];
@@ -93,7 +75,7 @@
                            usingBlock:^(NSTextCheckingResult *result, NSMatchingFlags flags, BOOL *stop) {
                                if ([result numberOfRanges] == 4 && [result rangeAtIndex:2].length != 0) {
                                    NSString *text = [sourceString substringWithRange:[result rangeAtIndex:2]];
-                                   [array addObject:[NSString bareCDATAString:text]];
+                                   [array addObject:text];
                                }
                            }];
     
@@ -104,7 +86,7 @@
 {
     NSString *string = [[XPFeed keyTags] componentsJoinedByString:@"|"];
 #ifdef DEBUG
-    string = [NSString stringWithFormat:@"%@|\\S+", string];
+//    string = [NSString stringWithFormat:@"%@|\\S+", string];
 #endif
     return string;
 }
@@ -131,7 +113,7 @@
                            usingBlock:^(NSTextCheckingResult *result, NSMatchingFlags flags, BOOL *stop) {
                                if ([result numberOfRanges] == 3 && [result rangeAtIndex:2].length != 0 && [result rangeAtIndex:1].length != 0) {
                                    NSString *text = [sourceString substringWithRange:[result rangeAtIndex:2]];
-                                   [dictObject setObject:[NSString bareCDATAString:text]
+                                   [dictObject setObject:text
                                                   forKey:[sourceString substringWithRange:[result rangeAtIndex:1]]];
                                    [matchRanges addObject:[NSValue valueWithRange:result.range]];
                                }

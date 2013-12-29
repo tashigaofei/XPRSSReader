@@ -40,31 +40,43 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor greenColor];
     
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh
+                                                                                          target:self action:@selector(rightBarButtonAction:)];
+    
     if ([[XPUserManager sharedXPUserManager] subscriptions] == nil) {
-        [self getUserInfoWithCompletionBlock:^(XPOldReaderUser *user) {
-            [[XPUserManager sharedXPUserManager] setActiveUserInfo:user];
-            [[XPHttpClient sharedInstance] getActiveUserSubScriptionsCompletionBlock:^(NSMutableArray *arrary) {
-                LogDebug(@"%@", arrary);
-                [[XPUserManager sharedXPUserManager] setSubscriptions:arrary];
-                [_tableView setTableDataSource:arrary];
-                [_tableView reloadData];
-                
-            } failureBlock:^(NSError *error) {
-                LogError(@"%@", error);
-            }];
-        } failureBlock:^(NSError *error) {
-            
-        }];
-      
+        [self reGetSubscription];
     }else{
         [_tableView setTableDataSource:[[XPUserManager sharedXPUserManager] subscriptions]];
         [_tableView reloadData];
     }
-    
+}
+
+-(void) rightBarButtonAction:(UIBarButtonItem*) sender;
+{
+    [self reGetSubscription];
+}
+
+-(void) reGetSubscription;
+{
+    [self getUserInfoWithCompletionBlock:^(XPOldReaderUser *user) {
+        [[XPUserManager sharedXPUserManager] setActiveUserInfo:user];
+        
+        [[XPHttpClient sharedInstance] getActiveUserSubScriptionsCompletionBlock:^(NSMutableArray *arrary) {
+            [[XPUserManager sharedXPUserManager] setSubscriptions:arrary];
+            [_tableView setTableDataSource:arrary];
+            [_tableView reloadData];
+            
+        } failureBlock:^(NSError *error) {
+            LogError(@"%@", error);
+        }];
+    } failureBlock:^(NSError *error) {
+        
+    }];
     
 }
 
--(void) getUserInfoWithCompletionBlock:(void (^)(XPOldReaderUser * user)) completionBlock failureBlock:(void (^)(NSError* error)) failureBlock;
+-(void) getUserInfoWithCompletionBlock:(void (^)(XPOldReaderUser * user)) completionBlock
+                          failureBlock:(void (^)(NSError* error)) failureBlock;
 {
     [[XPHttpClient sharedInstance] loginOldReaderWithEmail:@"tashigaofei@gmail.com"
                                                   password:@"Tashi123"

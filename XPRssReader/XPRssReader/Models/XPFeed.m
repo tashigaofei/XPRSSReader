@@ -7,6 +7,7 @@
 //
 
 #import "XPFeed.h"
+#import "GTMNSString+HTML.h"
 
 @implementation XPFeed
 
@@ -15,6 +16,7 @@
     self = [super initWithDictionary:dic];
     if (self) {
         self.content = self.content == nil ? self.objectDescription : self.content;
+        self.content = self.content == nil ? self.title : self.content;
     }
     
     return self;
@@ -46,48 +48,53 @@
 
 - (void)setValue:(id)value forKey:(NSString *)key
 {
+    id aValue = value;
+    if ([value isKindOfClass:[NSString class]]) {
+        aValue = [aValue gtm_stringByUnescapingFromHTML];
+    }
+    
     if ([key isEqualToString:@"id"] || [key isEqualToString:@"guid"]) {
-        self.objectID = value;
+        self.objectID = aValue;
         return;
     }
     if ([key isEqualToString:@"title"]) {
-        self.title = value;
+        self.title = aValue;
         return;
     }
     if ([key isEqualToString:@"link"]) {
-        self.link = value;
+        self.link = aValue;
         return;
     }
     if ([key isEqualToString:@"description"]) {
-        self.objectDescription = value;
+        self.objectDescription = aValue;
         return;
     }
     if ([key isEqualToString:@"content:encoded"] || [key isEqualToString:@"content"]) {
-        self.content = value;
+        self.content = aValue;
         return;
     }
     if ([key isEqualToString:@"comments"]) {
-        self.commentsLink = value;
+        self.commentsLink = aValue;
         return;
     }
     if ([key isEqualToString:@"wfw:commentRss"]) {
-        self.commentsFeed = [NSURL URLWithString:value];
+        self.commentsFeed = [NSURL URLWithString:aValue];
         return;
     }
     if ([key isEqualToString:@"slash:comments"]) {
-        self.commentsCount = @([value intValue]);
+        self.commentsCount = @([aValue intValue]);
         return;
     }
     if ([key isEqualToString:@"pubDate"] || [key isEqualToString:@"published"]) {
-        self.publishDate = value;
+        self.publishDate = aValue;
         return;
     }
     if ([key isEqualToString:@"updated"]) {
-        self.publishDate = value;
+        self.publishDate = aValue;
         return;
     }
     if ([key isEqualToString:@"dc:creator"]) {
-        self.author = value;
+        self.author = aValue;
         return;
     }
     

@@ -54,8 +54,9 @@
     
     NSString *html =[NSString stringWithFormat:@"<html>\
                      <style type=\"text/css\">\
-                     body {background-color: white;font-size:16px;margin:20px;}\
-                     p {margin-left: 20px}\
+                     body {background-color:0xf5f5f5;font-size:16px;}\
+                     p {margin-left:10px; margin-right:10px;text-indent:2em;}\
+                     img {width:270px; height:auto;  display: block; margin-left: auto; margin-right: auto;}\
                      </style>\
                      <body>%@</body>\
                      </html>\
