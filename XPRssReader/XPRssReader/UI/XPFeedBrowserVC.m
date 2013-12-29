@@ -29,7 +29,7 @@
 -(void) loadView;
 {
     _webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, screenWidth, screenHeight-20-44)];
-    _webView.scalesPageToFit = YES;
+//    _webView.scalesPageToFit = YES;
     _webView.delegate = self;
     self.view = _webView;
 }
@@ -54,7 +54,7 @@
     
     NSString *html =[NSString stringWithFormat:@"<html>\
                      <style type=\"text/css\">\
-                     body {background-color: white;font-size:50px;margin-left:40px;}\
+                     body {background-color: white;font-size:16px;margin:20px;}\
                      p {margin-left: 20px}\
                      </style>\
                      <body>%@</body>\
