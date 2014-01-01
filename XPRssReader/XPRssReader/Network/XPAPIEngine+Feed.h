@@ -12,5 +12,6 @@
 
 - (MKNetworkOperation *) getFeedsForURL:(NSString *) url
                              completion:(void (^)(NSMutableArray *feedItems)) completionBlock
+                               progress:(MKNKProgressBlock) downloadProgressBlock
                                 failure:(void (^)(NSError *error))failureBlock;
 @end

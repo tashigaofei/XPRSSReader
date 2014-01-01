@@ -11,10 +11,10 @@
 
 @implementation XPAPIEngine (Feed)
 
-
 - (MKNetworkOperation *) getFeedsForURL:(NSString *) url
              completion:(void (^)(NSMutableArray *feedItems)) completionBlock
-                failure:(void (^)(NSError *error))failureBlock;
+                               progress:(MKNKProgressBlock) downloadProgressBlock
+                                failure:(void (^)(NSError *error))failureBlock;
 {
     CFAbsoluteTime time = CFAbsoluteTimeGetCurrent();
     
@@ -58,6 +58,9 @@
         }
     }];
     
+    [op onDownloadProgressChanged:^(double progress) {
+        downloadProgressBlock(progress);
+    }];
     [[XPAPIEngine sharedInstance] enqueueOperation:op forceReload:NO];
     
     return op;
