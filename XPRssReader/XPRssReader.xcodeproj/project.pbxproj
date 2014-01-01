@@ -39,6 +39,7 @@
 		8173E3451872BD7B00D8E15F /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 8173E33C1872BD7B00D8E15F /* Reachability.m */; };
 		817C75D21870527000E58861 /* GTMNSString+HTML.m in Sources */ = {isa = PBXBuildFile; fileRef = 817C75D11870527000E58861 /* GTMNSString+HTML.m */; };
 		817C75D518707CDF00E58861 /* NSString+CDATA.m in Sources */ = {isa = PBXBuildFile; fileRef = 817C75D418707CDF00E58861 /* NSString+CDATA.m */; };
+		81C4DF9D1874048A0084426E /* XPNetworkOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 81C4DF9C1874048A0084426E /* XPNetworkOperation.m */; };
 		81CAF8F0186ACF060082B6B4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81CAF8EF186ACF060082B6B4 /* Foundation.framework */; };
 		81CAF8F2186ACF060082B6B4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81CAF8F1186ACF060082B6B4 /* CoreGraphics.framework */; };
 		81CAF8F4186ACF060082B6B4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81CAF8F3186ACF060082B6B4 /* UIKit.framework */; };
@@ -158,6 +159,8 @@
 		817C75D11870527000E58861 /* GTMNSString+HTML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GTMNSString+HTML.m"; sourceTree = "<group>"; };
 		817C75D318707CDF00E58861 /* NSString+CDATA.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+CDATA.h"; sourceTree = "<group>"; };
 		817C75D418707CDF00E58861 /* NSString+CDATA.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+CDATA.m"; sourceTree = "<group>"; };
+		81C4DF9B1874048A0084426E /* XPNetworkOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XPNetworkOperation.h; sourceTree = "<group>"; };
+		81C4DF9C1874048A0084426E /* XPNetworkOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XPNetworkOperation.m; sourceTree = "<group>"; };
 		81CAF8EC186ACF060082B6B4 /* XPRssReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XPRssReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		81CAF8EF186ACF060082B6B4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		81CAF8F1186ACF060082B6B4 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -291,6 +294,8 @@
 				8130A8D41872FBA9005AB61D /* XPAPIEngine+User.m */,
 				8130A8CD1872F7EB005AB61D /* XPAPIEngine.h */,
 				8130A8CE1872F7EB005AB61D /* XPAPIEngine.m */,
+				81C4DF9B1874048A0084426E /* XPNetworkOperation.h */,
+				81C4DF9C1874048A0084426E /* XPNetworkOperation.m */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -756,6 +761,7 @@
 				8173E3441872BD7B00D8E15F /* MKNetworkOperation.m in Sources */,
 				81CAF994186ADCEB0082B6B4 /* SDWebImagePrefetcher.m in Sources */,
 				8173E3421872BD7B00D8E15F /* UIAlertView+MKNetworkKitAdditions.m in Sources */,
+				81C4DF9D1874048A0084426E /* XPNetworkOperation.m in Sources */,
 				8130A8DA1872FE08005AB61D /* XPAPIEngine+Subscription.m in Sources */,
 				81CAF99B186ADCEB0082B6B4 /* UIScrollView+SVPullToRefresh.m in Sources */,
 				813D7B70186AEF4D005DA0F8 /* XPSubscriptionsTable.m in Sources */,

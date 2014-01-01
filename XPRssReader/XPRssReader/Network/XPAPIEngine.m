@@ -18,7 +18,10 @@
         sharedInstance = [[XPAPIEngine alloc] initWithHostName:@"www.baidu.com"
                                             customHeaderFields:@{@"User-Agent": @"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/31.0.1650.63 Safari/537.36 AppEngine-Google; (+http://code.google.com/appengine;)",
                                                         @"Authorization":@"GoogleLogin"}];
+        
+        [sharedInstance registerOperationSubclass:[XPNetworkOperation class]];
         [sharedInstance useCache];
+        
     });
     
     return sharedInstance;

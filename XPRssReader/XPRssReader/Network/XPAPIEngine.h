@@ -17,6 +17,7 @@
 #import "XPSubscription.h"
 #import "XPFeed.h"
 #import "XPOldReaderUser.h"
+#import "XPNetworkOperation.h"
 
 #import "XPAPIEngine+Login.h"
 #import "XPAPIEngine+User.h"
