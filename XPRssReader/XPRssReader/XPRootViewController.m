@@ -7,14 +7,7 @@
 //
 
 #import "XPRootViewController.h"
-
-#import "XPHttpClient+Login.h"
-#import "XPHttpClient+User.h"
-#import "XPUserManager.h"
-#import "XPHttpClient+Subscription.h"
-#import "XPHttpClient+Feed.h"
 #import "XPSubscriptionsTable.h"
-
 #import "XPSiteFeedListVC.h"
 
 @interface XPRootViewController ()<XPSubscriptionsTableDelegate>
@@ -61,7 +54,7 @@
     [self getUserInfoWithCompletionBlock:^(XPOldReaderUser *user) {
         [[XPUserManager sharedXPUserManager] setActiveUserInfo:user];
         
-        [[XPHttpClient sharedInstance] getActiveUserSubScriptionsCompletionBlock:^(NSMutableArray *arrary) {
+        [[XPAPIEngine sharedInstance] getActiveUserSubScriptionsCompletionBlock:^(NSMutableArray *arrary) {
             [[XPUserManager sharedXPUserManager] setSubscriptions:arrary];
             [_tableView setTableDataSource:arrary];
             [_tableView reloadData];
@@ -78,12 +71,12 @@
 -(void) getUserInfoWithCompletionBlock:(void (^)(XPOldReaderUser * user)) completionBlock
                           failureBlock:(void (^)(NSError* error)) failureBlock;
 {
-    [[XPHttpClient sharedInstance] loginOldReaderWithEmail:@"tashigaofei@gmail.com"
+    [[XPAPIEngine sharedInstance] loginOldReaderWithEmail:@"tashigaofei@gmail.com"
                                                   password:@"Tashi123"
                                            completionBlock:^(NSString *token) {
                                                LogDebug(@"%@", token);
                                             
-            [[XPHttpClient sharedInstance] getLoginedUserInfoWithToken:token
+            [[XPAPIEngine sharedInstance] getLoginedUserInfoWithToken:token
                                                        completionBlock:^(XPOldReaderUser *userinfo) {
                                                            LogDebug(@"%@", userinfo);
                                                            if (completionBlock) {

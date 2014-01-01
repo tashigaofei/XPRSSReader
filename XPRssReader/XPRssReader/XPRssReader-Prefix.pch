@@ -19,10 +19,11 @@
 #import "DDASLLogger.h"
 #import "DDFileLogger.h"
 #import "DDTTYLogger.h"
-#import "XPHttpClient.h"
+#import "XPAPIEngine.h"
 #import "UIImageView+WebCache.h"
 #import "UIButton+WebCache.h"
 #import "MBProgressHUD.h"
+
 
 #endif
 

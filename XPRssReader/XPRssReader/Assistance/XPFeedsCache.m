@@ -43,7 +43,7 @@
 {
     NSString *appPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
     NSString *directoryPath = [NSString stringWithFormat:@"%@/%@", appPath, NSStringFromClass([self class])];
-    return [NSString stringWithFormat:@"%@/%d", directoryPath, [siteURL hash]];
+    return [NSString stringWithFormat:@"%@/%lu", directoryPath, (unsigned long)[siteURL hash]];
 
 }
 

@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8130A8CF1872F7EB005AB61D /* XPAPIEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 8130A8CE1872F7EB005AB61D /* XPAPIEngine.m */; };
+		8130A8D21872F8F9005AB61D /* XPAPIEngine+Login.m in Sources */ = {isa = PBXBuildFile; fileRef = 8130A8D11872F8F9005AB61D /* XPAPIEngine+Login.m */; };
+		8130A8D51872FBA9005AB61D /* XPAPIEngine+User.m in Sources */ = {isa = PBXBuildFile; fileRef = 8130A8D41872FBA9005AB61D /* XPAPIEngine+User.m */; };
+		8130A8DA1872FE08005AB61D /* XPAPIEngine+Subscription.m in Sources */ = {isa = PBXBuildFile; fileRef = 8130A8D91872FE08005AB61D /* XPAPIEngine+Subscription.m */; };
+		8130A8DD1872FEC1005AB61D /* XPAPIEngine+Feed.m in Sources */ = {isa = PBXBuildFile; fileRef = 8130A8DC1872FEC1005AB61D /* XPAPIEngine+Feed.m */; };
 		813D7B63186ADE16005DA0F8 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 813D7B62186ADE16005DA0F8 /* MobileCoreServices.framework */; };
 		813D7B65186ADE1F005DA0F8 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 813D7B64186ADE1F005DA0F8 /* QuartzCore.framework */; };
 		813D7B6C186ADE84005DA0F8 /* XPHttpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 813D7B6A186ADE84005DA0F8 /* XPHttpClient.m */; };
@@ -110,6 +115,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8130A8CD1872F7EB005AB61D /* XPAPIEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XPAPIEngine.h; sourceTree = "<group>"; };
+		8130A8CE1872F7EB005AB61D /* XPAPIEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XPAPIEngine.m; sourceTree = "<group>"; };
+		8130A8D01872F8F9005AB61D /* XPAPIEngine+Login.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "XPAPIEngine+Login.h"; sourceTree = "<group>"; };
+		8130A8D11872F8F9005AB61D /* XPAPIEngine+Login.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "XPAPIEngine+Login.m"; sourceTree = "<group>"; };
+		8130A8D31872FBA9005AB61D /* XPAPIEngine+User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "XPAPIEngine+User.h"; sourceTree = "<group>"; };
+		8130A8D41872FBA9005AB61D /* XPAPIEngine+User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "XPAPIEngine+User.m"; sourceTree = "<group>"; };
+		8130A8D81872FE08005AB61D /* XPAPIEngine+Subscription.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "XPAPIEngine+Subscription.h"; sourceTree = "<group>"; };
+		8130A8D91872FE08005AB61D /* XPAPIEngine+Subscription.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "XPAPIEngine+Subscription.m"; sourceTree = "<group>"; };
+		8130A8DB1872FEC1005AB61D /* XPAPIEngine+Feed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "XPAPIEngine+Feed.h"; sourceTree = "<group>"; };
+		8130A8DC1872FEC1005AB61D /* XPAPIEngine+Feed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "XPAPIEngine+Feed.m"; sourceTree = "<group>"; };
 		813D7B62186ADE16005DA0F8 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		813D7B64186ADE1F005DA0F8 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		813D7B69186ADE84005DA0F8 /* XPHttpClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XPHttpClient.h; sourceTree = "<group>"; };
@@ -309,6 +324,16 @@
 		813D7B66186ADE84005DA0F8 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				8130A8D01872F8F9005AB61D /* XPAPIEngine+Login.h */,
+				8130A8D11872F8F9005AB61D /* XPAPIEngine+Login.m */,
+				8130A8D31872FBA9005AB61D /* XPAPIEngine+User.h */,
+				8130A8D41872FBA9005AB61D /* XPAPIEngine+User.m */,
+				8130A8D81872FE08005AB61D /* XPAPIEngine+Subscription.h */,
+				8130A8D91872FE08005AB61D /* XPAPIEngine+Subscription.m */,
+				8130A8DB1872FEC1005AB61D /* XPAPIEngine+Feed.h */,
+				8130A8DC1872FEC1005AB61D /* XPAPIEngine+Feed.m */,
+				8130A8CD1872F7EB005AB61D /* XPAPIEngine.h */,
+				8130A8CE1872F7EB005AB61D /* XPAPIEngine.m */,
 				813D7B9C186C166E005DA0F8 /* XPHttpClient+Feed.h */,
 				813D7B9D186C166E005DA0F8 /* XPHttpClient+Feed.m */,
 				813D7B7B186AF2B1005DA0F8 /* XPHttpClient+Login.h */,
@@ -808,6 +833,7 @@
 				81D8375D186DDAE100FA94E3 /* XPSiteFeedListVC.m in Sources */,
 				81CAF98B186ADCEB0082B6B4 /* MBProgressHUD.m in Sources */,
 				81CAF9B7186ADD550082B6B4 /* AFXMLRequestOperation.m in Sources */,
+				8130A8D51872FBA9005AB61D /* XPAPIEngine+User.m in Sources */,
 				81CAF98F186ADCEB0082B6B4 /* SDWebImageCompat.m in Sources */,
 				81CAF98D186ADCEB0082B6B4 /* NSData+GIF.m in Sources */,
 				81CAF986186ADCEB0082B6B4 /* DDLog.m in Sources */,
@@ -815,12 +841,14 @@
 				817C75D21870527000E58861 /* GTMNSString+HTML.m in Sources */,
 				813D7B6C186ADE84005DA0F8 /* XPHttpClient.m in Sources */,
 				81CAF993186ADCEB0082B6B4 /* SDWebImageManager.m in Sources */,
+				8130A8DD1872FEC1005AB61D /* XPAPIEngine+Feed.m in Sources */,
 				81D83757186DD9F700FA94E3 /* XPFeedBrowserVC.m in Sources */,
 				81CAF991186ADCEB0082B6B4 /* SDWebImageDownloader.m in Sources */,
 				81CAF98C186ADCEB0082B6B4 /* MKAnnotationView+WebCache.m in Sources */,
 				813D7B76186AF014005DA0F8 /* XPModel.m in Sources */,
 				81CAF996186ADCEB0082B6B4 /* UIImage+GIF.m in Sources */,
 				81CAF984186ADCEB0082B6B4 /* DDASLLogger.m in Sources */,
+				8130A8CF1872F7EB005AB61D /* XPAPIEngine.m in Sources */,
 				817C75D518707CDF00E58861 /* NSString+CDATA.m in Sources */,
 				8173E3441872BD7B00D8E15F /* MKNetworkOperation.m in Sources */,
 				81CAF9B4186ADD550082B6B4 /* AFNetworkActivityIndicatorManager.m in Sources */,
@@ -828,10 +856,12 @@
 				81CAF994186ADCEB0082B6B4 /* SDWebImagePrefetcher.m in Sources */,
 				8173E3421872BD7B00D8E15F /* UIAlertView+MKNetworkKitAdditions.m in Sources */,
 				81CAF9B2186ADD550082B6B4 /* AFImageRequestOperation.m in Sources */,
+				8130A8DA1872FE08005AB61D /* XPAPIEngine+Subscription.m in Sources */,
 				81CAF99B186ADCEB0082B6B4 /* UIScrollView+SVPullToRefresh.m in Sources */,
 				813D7B70186AEF4D005DA0F8 /* XPSubscriptionsTable.m in Sources */,
 				81CAF995186ADCEB0082B6B4 /* UIButton+WebCache.m in Sources */,
 				81CAF999186ADCEB0082B6B4 /* UIImageView+WebCache.m in Sources */,
+				8130A8D21872F8F9005AB61D /* XPAPIEngine+Login.m in Sources */,
 				81CAF9B1186ADD550082B6B4 /* AFHTTPRequestOperation.m in Sources */,
 				81D83760186DDC6700FA94E3 /* XPSiteFeedListTable.m in Sources */,
 				813D7B7D186AF2B1005DA0F8 /* XPHttpClient+Login.m in Sources */,

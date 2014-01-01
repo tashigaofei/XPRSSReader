@@ -7,7 +7,6 @@
 //
 
 #import "XPSiteFeedListVC.h"
-#import "XPHttpClient+Feed.h"
 #import "XPSiteFeedListTable.h"
 #import "XPFeedBrowserVC.h"
 
@@ -42,7 +41,7 @@
     
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
-    [[XPHttpClient sharedInstance] getFeedsForURL:_subscription.url completion:^(NSMutableArray *feedItems) {
+    [[XPAPIEngine sharedInstance] getFeedsForURL:_subscription.url completion:^(NSMutableArray *feedItems) {
         [_tableView setTableDataSource:feedItems];
         [_tableView reloadData];
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
