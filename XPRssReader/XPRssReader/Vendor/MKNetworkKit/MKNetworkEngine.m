@@ -446,7 +446,7 @@ static NSOperationQueue *_sharedNetworkQueue;
             [queuedOperation updateHandlersFromOperation:operation];
         }
         
-        if(expiryTimeInSeconds <= 0 || forceReload || operationFinished)
+        if(expiryTimeInSeconds <= 0 || forceReload || operationFinished || [cachedData length] == 0)
           [_sharedNetworkQueue addOperation:operation];
         // else don't do anything
       });

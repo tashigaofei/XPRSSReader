@@ -17,7 +17,8 @@
     
     [super setCacheHandler:^(MKNetworkOperation* completedCacheableOperation) {
         NSDate * expiresDate = [NSDate dateFromRFC1123:completedCacheableOperation.cacheHeaders[@"Expires"]];
-        if (expiresDate == nil || [expiresDate compare:defaultExpiresDate] == NSOrderedAscending) {
+        NSTimeInterval timesInterval = [expiresDate timeIntervalSinceDate:defaultExpiresDate];
+        if (expiresDate == nil || timesInterval < 0 || timesInterval > 60*10) {
             completedCacheableOperation.cacheHeaders[@"Expires"] = [defaultExpiresDate rfc1123String];
         }
         
